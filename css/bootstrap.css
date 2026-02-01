@@ -4708,6 +4708,284 @@ fieldset[disabled] .navbar-inverse .btn-link:hover,
 fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444;
 }
+/* Timetable Section */
+#timetable {
+    background: #fff;
+}
+
+.timetable-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 30px;
+}
+
+.week-display {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    min-width: 280px;
+    text-align: center;
+}
+
+.week-nav {
+    background: #00a8ff;
+    border: none;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.week-nav.prev-week::after {
+    content: '‹';
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.week-nav.next-week::after {
+    content: '›';
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.week-nav:hover {
+    background: #0090db;
+    transform: scale(1.1);
+}
+
+.week-nav:active {
+    transform: scale(0.95);
+}
+
+.week-nav:disabled,
+.week-nav.disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.week-nav:disabled:hover,
+.week-nav.disabled:hover {
+    background: #ccc;
+    transform: none;
+}
+
+.timetable-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timetable-grid {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    min-width: 800px;
+}
+
+.timetable-grid thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.timetable-grid th {
+    padding: 20px 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.timetable-grid th.time-column {
+    width: 100px;
+}
+
+.timetable-grid td {
+    padding: 20px 15px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    vertical-align: middle;
+}
+
+.time-cell {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #555;
+    font-size: 15px;
+}
+
+.class-cell {
+    background: #e3f2fd;
+    position: relative;
+}
+
+.class-button {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.class-button:hover {
+    background: #90caf9 !important;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.class-button:active {
+    transform: scale(0.98);
+}
+
+.class-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.class-info strong {
+    color: #1976d2;
+    font-size: 14px;
+}
+
+.time-range {
+    font-size: 11px;
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+.location-label {
+    font-size: 11px;
+    color: #888;
+    font-style: italic;
+}
+
+.date-label {
+    font-size: 12px;
+    color: #666;
+}
+
+.time-break-row {
+    height: 20px;
+}
+
+.time-break {
+    background: linear-gradient(to right, #f5f5f5 0%, #e0e0e0 50%, #f5f5f5 100%);
+    padding: 5px !important;
+    border: none !important;
+}
+
+.break-indicator {
+    text-align: center;
+}
+
+.break-dots {
+    color: #999;
+    font-size: 18px;
+    letter-spacing: 8px;
+}
+
+.empty-cell {
+    background: #fafafa;
+}
+
+.empty-schedule {
+    padding: 60px 20px !important;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+.empty-schedule-message {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.empty-calendar-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.empty-schedule-message h4 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.empty-schedule-message p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 32px;
+    }
+    
+    #intro h3 {
+        font-size: 18px;
+    }
+    
+    nav.navbar {
+        padding: 15px 0;
+    }
+    
+    nav.navbar.scrolled {
+        padding: 10px 0;
+    }
+    
+    .timetable-header {
+        gap: 15px;
+    }
+    
+    .week-display {
+        font-size: 16px;
+        min-width: 200px;
+    }
+    
+    .week-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .timetable-grid th,
+    .timetable-grid td {
+        padding: 12px 8px;
+        font-size: 12px;
+    }
+    
+    .class-info strong {
+        font-size: 12px;
+    }
+    
+    .time-range {
+        font-size: 9px;
+    }
+    
+    .location-label {
+        font-size: 9px;
+    }
+    
+    .date-label {
+        font-size: 10px;
+    }
+    
+    .break-dots {
+        font-size: 14px;
+        letter-spacing: 4px;
+    }
+}
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;

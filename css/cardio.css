@@ -114,7 +114,7 @@ header {
 	width: 100%;
 	color: white;
 	background: rgba(28, 36, 65, 0.93);
-	background: url('../img/header.jpg');
+	background: url('../img/header(4).png');
 	background-size: cover;
 }
 
@@ -146,8 +146,8 @@ header .typed-cursor {
 	color: #00a8ff;
 	-webkit-animation-name: flash;
 	animation-name: flash;
-	-webkit-animation-duration: 1s;
-	animation-duration: 1s;
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
 	-webkit-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
 }
@@ -159,36 +159,53 @@ a {
 	transition: all 0.3s ease;
 }
 /* Navigation Bar ( Navbar ) */
-
+/* Navigation Bar ( Navbar ) */
 nav.navbar {
-	position: absolute;
-	z-index: 9500;
-	width: 100%;
-	width: 100vw;
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+    position: fixed;
+    z-index: 9500;
+    width: 100%;
+    width: 100vw;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 25px 0;
+    top: 0;
 }
 
 nav.navbar .navbar-nav li.active a:not(.btn) {
-	color: #00a8ff !important;
+    color: #00a8ff !important;
 }
 
-nav.navbar-fixed-top {
-	z-index: 9499;
-	top: 0;
-	padding: 25px 0;
-	opacity: 0;
-	background: white;
-	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
+/* Scrolled state */
+nav.navbar.scrolled {
+    background: white;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
 }
 
-nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
-	color: #bbb;
+nav.navbar.scrolled .navbar-nav > li > a:not(.btn) {
+    color: #333;
 }
 
+nav.navbar.scrolled .icon-bar {
+    background: #333;
+}
+
+nav.navbar.scrolled .navbar-brand img {
+    max-height: 40px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* Default icon bar color (for non-scrolled state) */
 .icon-bar {
-	background: #bbb;
+    background: #fff;
 }
+
+/* Default navbar link color (for non-scrolled state) */
+nav.navbar .navbar-nav > li > a:not(.btn) {
+    color: #fff;
+}
+
 /* Buttons */
 
 .btn {
