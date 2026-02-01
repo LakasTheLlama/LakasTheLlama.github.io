@@ -284,7 +284,7 @@ nav.navbar .navbar-nav > li > a:not(.btn) {
 
 .container {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 }
 /* Sections */
 section {
@@ -296,14 +296,27 @@ section {
 	background: #fff;
 }
 
+
+
 .section-padded {
 	padding: 140px 0 40px;
+}
+
+/* YouTube Subscribe Section */
+.youtube-section {
+    padding: 120px 0;
+    background: #f7f7f7;
+    text-align: center;
+}
+
+.youtube-subscribe-wrapper {
+    min-height: 100px;
 }
 
 .cut-top {
 	content: ' ';
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	top: -80px;
 	left: 0;
 	width: 0;
@@ -315,7 +328,7 @@ section {
 .cut-bottom {
 	content: ' ';
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	bottom: -80px;
 	left: 0;
 	width: 0;
@@ -337,13 +350,13 @@ section {
 }
 
 .intro-table-first {
-	background-image: url('../img/table-1.jpg');
+	background-image: url('../img/table-1.png');
 }
 
 .intro-table-hover {
 	-webkit-transition: background-image 0.3s ease, background-position 0.3s;
 	transition: background-image 0.3s ease, background-position 0.3s;
-	background-image: url('../img/table-2.jpg');
+	background-image: url('../img/table-2.png');
 }
 
 .intro-table-hover h4 {
@@ -354,7 +367,7 @@ section {
 }
 
 .intro-table-hover:hover {
-	background-image: url('../img/table-2-hover.jpg');
+	background-image: url('../img/table-2-hover.png');
 	background-position: 50% 50%;
 }
 
