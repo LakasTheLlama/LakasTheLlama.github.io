@@ -168,15 +168,15 @@
   background: white;
 }
 
-/* Owl Testimonals */
-.owl-testimonials .owl-controls {
+/* Owl facebook */
+.owl-facebook .owl-controls {
   -webkit-transform:translateY(-1200%);
   transform:translateY(-1200%);
   position: absolute;
   right:20px;
 }
 
-.owl-testimonials .owl-controls .owl-page span {
+.owl-facebook .owl-controls .owl-page span {
   background: transparent;
   border-radius:0;
   border:2px solid white;
@@ -184,8 +184,8 @@
   height: 8px;
 }
 
-.owl-testimonials .owl-controls .owl-page.active span,
-.owl-testimonials .owl-controls .owl-page:hover span {
+.owl-facebook .owl-controls .owl-page.active span,
+.owl-facebook .owl-controls .owl-page:hover span {
   background: white;
 }
 
