@@ -19,7 +19,8 @@ body {
 
 .parallax img {
 	width: 100%;
-	height: 100%;
+	height: 100vw;
+	object-fit: cover;
 }
 
 /* constant nav bar */
@@ -283,7 +284,7 @@ body.merch-page nav.navbar .navbar-nav > li > a:not(.btn) {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .heading {
         font-size: 32px;
     }
@@ -291,18 +292,64 @@ body.merch-page nav.navbar .navbar-nav > li > a:not(.btn) {
     #intro h3 {
         font-size: 18px;
     }
+
+	.mobile-menu-toggle {
+		display: flex;
+	}
     
     nav.navbar .container {
 		flex-direction: column;
-		gap: 20px;
+		max-width: 100vw;
+		box-sizing: border-box;
+		
+	}
+
+	nav.original {
+		display: none;
+		opacity: 0 !important;
+		pointer-events: none;
+	}
+
+	nav.navbar-fixed-top .navbar-brand img {
+		vertical-align: top;
+		scale: 0.8;
+		top: 0;
+	}
+
+	nav.navbar-fixed-top {
+		opacity: 1 !important;
+		max-height: 80px;
+		max-width: 100vw;
+	}
+
+	nav.navbar {
+		background-color: rgba(255, 255, 255, 0.95);
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		color: #333;
+	}
+
+	nav.navbar .navbar-nav.active > li > a:not(.btn) {
+		color: #000000;
 	}
 
 	nav.navbar .navbar-nav {
+		display: none !important; 
+	}
+	
+
+	nav.navbar .navbar-nav.active {
+		display: flex !important;
+		background-color: white;
 		flex-direction: column;
 		gap: 10px;
 		width: 100%;
 		text-align: center;
+		
+	
 	}
+
+	
+	
 
 	nav.navbar .navbar-nav li a:not(.btn) {
 		display: block;
@@ -371,7 +418,7 @@ body.merch-page nav.navbar .navbar-nav > li > a:not(.btn) {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; /* Allow wrapping to multiple rows */
-	padding-top: 100px;
+	padding-top: 5%;
     gap: 20px;
     max-width: 80%; /* Control maximum width before wrapping */
     transition: transform 0.4s ease;
@@ -412,19 +459,19 @@ body.merch-page nav.navbar .navbar-nav > li > a:not(.btn) {
 .product-title {
     font-size: 18px;
     font-weight: bold;
-    margin: 15px;
+    margin: 20%;
 }
 
 .product-description {
     font-size: 14px;
     color: #777;
-    margin: 0 15px;
+    margin: 0 1%;
 }
 
 .price {
     font-size: 16px;
     color: #333;
-    margin: 5px 15px;
+    margin: 5% 15%;
 }
 
 .request-merch {
@@ -624,6 +671,7 @@ ul.white-list li:before {
 
 header {
 	position: relative;
+	min-height: 100vh;
 	width: 100%;
 	color: white;
 	background: rgba(28, 36, 65, 0.93);
@@ -637,7 +685,7 @@ header .table {
 }
 
 header .container {
-	height: 100%;
+	height: 100vh;
 }
 
 header .header-text {
@@ -686,6 +734,8 @@ nav.navbar .container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	max-width: 100vw;
+	box-sizing: border-box;
 }
 
 nav.navbar .navbar-brand img {
@@ -700,7 +750,7 @@ nav.navbar .navbar-nav {
 	margin: 0;
 	padding: 0;
 	align-items: center;
-	gap: 30px;
+	gap: 5%;
 }
 
 nav.navbar .navbar-nav li {
@@ -739,6 +789,39 @@ nav.navbar.scrolled .navbar-nav > li > a:not(.btn) {
 
 nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
 	color: #00a8ff;
+}
+
+/* Mobile toggle */
+.mobile-menu-toggle {
+	right: 25%;
+	top: 30%;
+	position: absolute;
+	flex-direction: column;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+	z-index: 1000;
+}
+
+.mobile-menu-toggle span {
+	width: 25px;
+	height: 3px;
+	background: #000000;
+	margin: 3px 0;
+	transition: all 0.3s ease;
+	border-radius: 2px;
+}
+.mobile-menu-toggle.active span:nth-child(1) {
+	transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+	opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+	transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Buttons */
@@ -858,6 +941,7 @@ section {
 	height: 0;
 	border-top: 80px solid transparent;
 	border-right: 30px solid white;
+	border-left: 1351px;
 }
 
 .cut-bottom {
@@ -1524,9 +1608,6 @@ footer .social-footer li:hover a {
 	vertical-align: middle;
 }
 
-.mobile-nav ul li {
-	margin: 25px 0;
-}
 
 .mobile-nav ul li a:not(.btn) {
 	color: #aaa;
