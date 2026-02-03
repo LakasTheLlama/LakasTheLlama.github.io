@@ -24,30 +24,29 @@ body {
 }
 
 /* constant nav bar */
-/* Merch Page Styling */
-body.merch-page nav.original {
+body.other nav.original {
 	opacity: 0 !important;
 	pointer-events: none;
 }
 
-body.merch-page nav.navbar-fixed-top .navbar-brand img {
+body.other nav.navbar-fixed-top .navbar-brand img {
 	vertical-align: top;
 	scale: 0.8;
 	top: 0;
 }
 
-body.merch-page nav.navbar-fixed-top {
+body.other nav.navbar-fixed-top {
 	opacity: 1 !important;
 	max-height: 80px;
 }
 
-body.merch-page nav.navbar {
+body.other nav.navbar {
 	background-color: rgba(255, 255, 255, 0.95);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	color: #333;
 }
 
-body.merch-page nav.navbar .navbar-nav > li > a:not(.btn) {
+body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 	color: #000000;
 }
 
@@ -793,7 +792,7 @@ nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
 
 /* Mobile toggle */
 .mobile-menu-toggle {
-	right: 25%;
+	right: 15%;
 	top: 30%;
 	position: absolute;
 	flex-direction: column;
