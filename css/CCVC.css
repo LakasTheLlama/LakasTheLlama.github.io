@@ -23,20 +23,31 @@ body {
 }
 
 /* constant nav bar */
-
+/* Merch Page Styling */
 body.merch-page nav.original {
-    opacity: 0 !important;
-    pointer-events: none;
+	opacity: 0 !important;
+	pointer-events: none;
+}
+
+body.merch-page nav.navbar-fixed-top .navbar-brand img {
+	vertical-align: top;
+	scale: 0.8;
+	top: 0;
 }
 
 body.merch-page nav.navbar-fixed-top {
-    opacity: 1 !important;
+	opacity: 1 !important;
+	max-height: 80px;
 }
 
 body.merch-page nav.navbar {
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	background-color: rgba(255, 255, 255, 0.95);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	color: #333;
+}
+
+body.merch-page nav.navbar .navbar-nav > li > a:not(.btn) {
+	color: #000000;
 }
 
 /* Timetable Section */
@@ -281,13 +292,22 @@ body.merch-page nav.navbar {
         font-size: 18px;
     }
     
-    nav.navbar {
-        padding: 15px 0;
-    }
-    
-    nav.navbar.scrolled {
-        padding: 10px 0;
-    }
+    nav.navbar .container {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	nav.navbar .navbar-nav {
+		flex-direction: column;
+		gap: 10px;
+		width: 100%;
+		text-align: center;
+	}
+
+	nav.navbar .navbar-nav li a:not(.btn) {
+		display: block;
+		width: 100%;
+	}
     
     .timetable-header {
         gap: 15px;
@@ -345,7 +365,6 @@ body.merch-page nav.navbar {
 #product-sections.shifted {
     justify-content: flex-start;
     padding-left: 50px;
-    padding-right: 500px; /* Make room for the detail panel */
 }
 
 .product-grid {
@@ -354,12 +373,12 @@ body.merch-page nav.navbar {
     flex-wrap: wrap; /* Allow wrapping to multiple rows */
 	padding-top: 100px;
     gap: 20px;
-    max-width: 1500px; /* Control maximum width before wrapping */
+    max-width: 80%; /* Control maximum width before wrapping */
     transition: transform 0.4s ease;
 }
 
 #product-sections.shifted .product-grid {
-    max-width: 1200px; /* Narrower when shifted, causing earlier wrapping */
+    max-width: 60%; /* Narrower when shifted, causing earlier wrapping */
 }
 
 .product-card {
@@ -371,7 +390,7 @@ body.merch-page nav.navbar {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     padding: 20px;
-    width: 250px;
+    width: 22%;
     cursor: pointer;
     flex-shrink: 0; /* Prevent cards from shrinking */
 }
@@ -429,8 +448,9 @@ body.merch-page nav.navbar {
 .product-detail-panel {
     position: fixed;
     top: 0;
-    right: -700px;
-    width: 650px;
+	right: 0;
+    visibility: collapse;
+    width: 40%;
     height: 100vh;
     background-color: #fff;
     box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
@@ -441,7 +461,7 @@ body.merch-page nav.navbar {
 }
 
 .product-detail-panel.open {
-    right: 0;
+    visibility: visible;
 }
 
 .close-btn {
@@ -651,52 +671,74 @@ a {
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-/* Navigation Bar ( Navbar ) */
-/* Navigation Bar ( Navbar ) */
+
+/* Simplified Navigation Bar */
 nav.navbar {
-    position: fixed;
-    z-index: 9500;
-    width: 100%;
-    width: 100vw;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    padding: 25px 0;
-    top: 0;
+	position: fixed;
+	z-index: 9500;
+	width: 100%;
+	padding: 0 0;
+	top: 0;
+	transition: all 0.3s ease;
+}
+
+nav.navbar .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav.navbar .navbar-brand img {
+	max-height: 80px;
+	transition: all 0.3s ease;
+}
+
+/* Navigation Links */
+nav.navbar .navbar-nav {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	align-items: center;
+	gap: 30px;
+}
+
+nav.navbar .navbar-nav li {
+	margin: 0;
+}
+
+nav.navbar .navbar-nav li a:not(.btn) {
+	color: #fff;
+	font-size: 16px;
+	padding: 10px 15px;
+	transition: all 0.3s ease;
+}
+
+nav.navbar .navbar-nav li a:not(.btn):hover {
+	color: #00a8ff;
 }
 
 nav.navbar .navbar-nav li.active a:not(.btn) {
-    color: #00a8ff !important;
+	color: #00a8ff !important;
 }
 
-/* Scrolled state */
+/* Scrolled State */
 nav.navbar.scrolled {
-    background: white;
-    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
-    padding: 15px 0;
-}
-
-nav.navbar.scrolled .navbar-nav > li > a:not(.btn) {
-    color: #333;
-}
-
-nav.navbar.scrolled .icon-bar {
-    background: #333;
+	background: white;
+	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
+	padding: 10px 0;
 }
 
 nav.navbar.scrolled .navbar-brand img {
-    max-height: 40px;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+	scale: 0.8;
 }
 
-/* Default icon bar color (for non-scrolled state) */
-.icon-bar {
-    background: #fff;
+nav.navbar.scrolled .navbar-nav > li > a:not(.btn) {
+	color: #333;
 }
 
-/* Default navbar link color (for non-scrolled state) */
-nav.navbar .navbar-nav > li > a:not(.btn) {
-    color: #fff;
+nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
+	color: #00a8ff;
 }
 
 /* Buttons */
