@@ -24,10 +24,6 @@ body {
 }
 
 /* constant nav bar */
-body.other nav.original {
-	opacity: 0 !important;
-	pointer-events: none;
-}
 
 body.other nav.navbar-fixed-top .navbar-brand img {
 	vertical-align: top;
@@ -793,7 +789,7 @@ nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
 /* Mobile toggle */
 .mobile-menu-toggle {
 	right: 15%;
-	top: 30%;
+	top: 20px;
 	position: absolute;
 	flex-direction: column;
 	background: transparent;
