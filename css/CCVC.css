@@ -415,7 +415,7 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 #product-sections {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
 	max-width: 100%;
 	
