@@ -433,12 +433,13 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 .product-grid {
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
-    gap: 20px;
+    gap: 2%;
     width: 100%;
 }
 
 #product-sections.shifted .product-grid {
     max-width: 60%; /* Narrower when shifted, causing earlier wrapping */
+	grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
 }
 
 #product-sections.shifted .product-grid .product-card p {
@@ -453,11 +454,11 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
     text-align: center;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     cursor: pointer;
+
     
 }
 
@@ -478,19 +479,25 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 .product-title {
     font-size: 18px;
     font-weight: bold;
-    margin: 5%;
+	margin: 0;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .product-description {
     font-size: 14px;
     color: #777;
-    margin: 0 1%;
+	margin: 0;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .price {
     font-size: 16px;
     color: #333;
-    margin: 5% 5%;
+	margin: 0;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .request-merch {
@@ -812,7 +819,7 @@ nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
 
 /* Mobile toggle */
 .mobile-menu-toggle {
-	right: 15%;
+	right: 10%;
 	top: 20px;
 	position: absolute;
 	flex-direction: column;
