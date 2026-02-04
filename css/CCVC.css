@@ -1442,7 +1442,7 @@ footer .social-footer li:hover a {
 .modal-popup {
 	position: relative;
 	padding: 15px 30px;
-	max-height: 100vh;
+	max-height: 100%;
 	text-align: center;
 	background: url('../img/popup.jpg');
 	box-shadow: none;
@@ -1497,7 +1497,7 @@ footer .social-footer li:hover a {
 }
 
 .popup-form .dropdown .dropdown-menu li {
-	font-size: 25px;
+	font-size: 22px;
 	width: 100%;
 	background: transparent;
 }
