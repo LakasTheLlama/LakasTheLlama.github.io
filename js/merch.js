@@ -44,10 +44,27 @@ jQuery(function($) {
 			$(this).css('animation-delay', i + "s");
 			i += interval;
 		});
+
 		$('.popup-form .dropdown-menu li a').click(function(event) {
 			event.preventDefault();
-			$(this).parent().parent().prev('button').html($(this).html());
+			
+			// Get the selected text
+			var selectedText = $(this).text();
+			
+			// Update the button text (traverse up to ul, then to button)
+			$(this).closest('.dropdown-menu').siblings('#dLabel').text(selectedText);
+			
+			// Close the dropdown
+			$(this).closest('.dropdown').removeClass('open');
+			
+			// Optional: Add visual feedback on mobile
+			$(this).parent().addClass('active');
+			setTimeout(() => {
+				$('.dropdown-menu li').removeClass('active');
+			}, 300);
 		});
+
+		// MOBILE NAV MENU
 
 		$('body').on('click', '.mobile-menu-toggle', function() {
 			$('nav.navbar .navbar-nav').addClass('active');
