@@ -331,21 +331,23 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 		display: none !important; 
 	}
 
-	.product-title {
+	#product-sections .product-grid .product-card p {
 		font-size: 80%;
 	}
 
-	.product-description {
-		font-size: 80%;
+	#product-sections .product-grid .product-card h3 {
+		font-size: 80%; 
 	}
 
-	.price {
-		font-size: 80%;
+	#product-sections.shifted .product-grid .product-card h3 {
+		font-size: 60% !important; 
 	}
 
 	#product-sections.shifted .product-grid .product-card p {
 		font-size: 60% !important; 
 	}
+
+	
 	
 
 	nav.navbar .navbar-nav.active {
@@ -417,22 +419,22 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
     min-height: 100vh;
 	max-width: 100%;
 	
-    padding: 5% 4%;
+    padding: 0 4%;
+	padding-top: 95px;
+	padding-bottom: 3%;
     transition: justify-content 0.4s ease, padding-right 0.4s ease;
 }
 
 #product-sections.shifted {
     justify-content: flex-start;
-    padding-left: 5%;
+    padding-left: 4%;
 }
 
 .product-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping to multiple rows */
-	padding-top: 5%;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
     gap: 20px;
-    transition: transform 0.4s ease;
+    width: 100%;
 }
 
 #product-sections.shifted .product-grid {
@@ -443,6 +445,10 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
     font-size: 80%; 
 }
 
+#product-sections.shifted .product-grid .product-card h3 {
+	font-size: 80%; 
+}
+
 .product-card {
     text-align: center;
     background-color: #fff;
@@ -451,9 +457,8 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    width: 22%;
     cursor: pointer;
-    flex-shrink: 0; /* Prevent cards from shrinking */
+    
 }
 
 .product-card:hover {
@@ -473,7 +478,7 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 .product-title {
     font-size: 18px;
     font-weight: bold;
-    margin: 20%;
+    margin: 5%;
 }
 
 .product-description {
@@ -485,7 +490,7 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 .price {
     font-size: 16px;
     color: #333;
-    margin: 5% 15%;
+    margin: 5% 5%;
 }
 
 .request-merch {
