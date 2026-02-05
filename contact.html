@@ -34,60 +34,71 @@
 	<link rel="stylesheet" type="text/css" href="css/CCVC.css">
 </head>
 
-<body>
+<body> 
+	<div class="row title text-center">
+		<h1>
+			Any enquiries? Contact us through our socials, via email or using the form below.
+		</h1>
+	</div>
+	
+	<section style="display: flex; flex-direction: row; gap: 5%;">
+		<div style="width: 60%; left: 5%;">
+			<form >
+				<div style="padding: 10%; display:flex; flex-direction: column; gap: 20px;"> 
+					<h3> 
+						Contact Form
+					</h3>
+					<input type="text" class="form-control form-grey" placeholder="Full Name">
+					<input type="text" class="form-control form-grey" placeholder="Email Address">
+					<input type="text" class="form-control form-grey" placeholder="Number">
+					<textarea class="form-control form-grey" style="padding-bottom: 100px; resize: none;" rows="5;" placeholder="Questions or Message..."></textarea>
+					<button type="submit"  class="btn contact-submit">Submit</button>
+				</div>
+				
+			</form>
+		</div>
+		<div style="width: 30%; display:flex; flex-direction: column; gap: 30px; justify-content: center;"> 
+			<a href="mailto:secretary.ccvc@gmail.com" style="text-align: center;"><img src="img/email.png" alt="Mail" style="width: 40%;"> </a>
+			<a href="mailto:secretary.ccvc@gmail.com" style="text-align: center;"><img src="img/Instagram.png" alt="Mail" style="width: 40%"> </a>
+			<a href="mailto:secretary.ccvc@gmail.com" style="text-align: center;"><img src="img/email.png" alt="Mail" style="width: 40%"> </a>
+		</div>
+		
+	</section>
     <section id="team" class="section gray-bg">
 		<div class="container">
 			<div class="row title text-center">
-				<h2 class="margin-top">Team</h2>
-				<h4 class="light muted">We're a dream team!</h4>
+				<h2 style="color: rgb(0, 0, 0)" class="margin-top">Want to talk directly?</h2>
+				<h4 class="light muted">please respect our team, we may not always be able to answer</h4>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="team text-center">
-						<div class="cover" style="background:url('img/team/team-cover1.jpg'); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$69.00</h3>
-								<h5 class="light light-white">1 - 5 sessions / month</h5>
-							</div>
-						</div>
 						<img src="img/team/team3.jpg" alt="Team Image" class="avatar">
 						<div class="title">
 							<h4>Elizabeth Meyer</h4>
 							<h5 class="muted regular">President</h5>
 						</div>
-						<button data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill">Sign Up Now</button>
+					
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="team text-center">
-						<div class="cover" style="background:url('img/team/team-cover2.jpg'); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$69.00</h3>
-								<h5 class="light light-white">1 - 5 sessions / month</h5>
-							</div>
-						</div>
 						<img src="img/team/team1.jpg" alt="Team Image" class="avatar">
 						<div class="title">
 							<h4>Lukas Cedervall Norton</h4>
 							<h5 class="muted regular">Vice-President</h5>
 						</div>
-						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Sign Up Now</a>
+						
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="team text-center">
-						<div class="cover" style="background:url('img/team/team-cover3.jpg'); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$69.00</h3>
-								<h5 class="light light-white">1 - 5 sessions / month</h5>
-							</div>
-						</div>
 						<img src="img/team/team2.jpg" alt="Team Image" class="avatar">
 						<div class="title">
 							<h4>Steven Hunter</h4>
 							<h5 class="muted regular">Treasurer</h5>
 						</div>
-						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Sign Up Now</a>
+					
 					</div>
 				</div>
 			</div>

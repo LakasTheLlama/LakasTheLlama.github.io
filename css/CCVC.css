@@ -1402,27 +1402,15 @@ footer .social-footer li:hover a {
 	transition: background-color 0.3s;
 }
 
-.form-control.form-white::-webkit-input-placeholder {
-	/* WebKit browsers */
-	color: #fff;
+.form-control.form-grey {
+	color: #555;
+	border: 1px solid #555;
+	border-radius: 10px;
+	background: #f7f7f7;
+	-webkit-transition: background-color 0.3s;
+	transition: background-color 0.3s;
 }
 
-.form-control.form-white:-moz-placeholder {
-	opacity: 1;
-	/* Mozilla Firefox 4 to 18 */
-	color: #fff;
-}
-
-.form-control.form-white::-moz-placeholder {
-	opacity: 1;
-	/* Mozilla Firefox 19+ */
-	color: #fff;
-}
-
-.form-control.form-white:-ms-input-placeholder {
-	/* Internet Explorer 10+ */
-	color: #fff;
-}
 
 .form-control.form-white:focus {
 	background: rgba(255,255,255,0.2);
@@ -1603,6 +1591,26 @@ footer .social-footer li:hover a {
 	color: #00a8ff;
 	background: #fff;
 }
+
+.btn.contact-submit {
+	margin-top: 10px;
+	width: 50%; 
+	margin: auto; 
+	font-weight: bold;
+	color: #00a8ff;
+	background-color: #f7f7f7; 
+	border: 1px solid #555;
+}
+
+.btn.contact-submit:focus {
+	font-weight: bold;
+}
+
+.btn.contact-submit:hover {
+	color: #fff;
+	background: #00a8ff;
+}
+
 
 /* Mobile Nav */
 .mobile-nav {

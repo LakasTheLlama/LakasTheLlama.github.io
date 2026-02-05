@@ -53,3 +53,17 @@ Follow us: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.face
 [© Codrops 2015](http://www.codrops.com)
 
 
+
+
+
+
+
+
+
+
+
+
+## CREDITS
+<a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Uniconlabs - Flaticon</a>
+
+<a href="https://www.vecteezy.com/free-png/instagram-logo-transparent-png">Instagram Logo Transparent Png PNGs by Vecteezy</a>
