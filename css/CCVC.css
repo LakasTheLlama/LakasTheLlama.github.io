@@ -121,6 +121,7 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 }
 
 .timetable-wrapper {
+	position: relative;
     overflow-x: auto;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -139,26 +140,25 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 }
 
 .timetable-grid th {
-    padding: 20px 15px;
+    padding: 1% 1%;
     text-align: center;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 100%;
     border: 1px solid rgba(255, 255, 255, 0.2);
-	max-width: 150px;
+    max-width: 150px;
     word-wrap: break-word;
 }
 
 .timetable-grid th.time-column {
-    width: 100px;
-	min-width: 100px;
+    min-width: 100px;
 }
 
 .timetable-grid td {
-    padding: 10px 15px;
+    padding: 1% 1%;
     text-align: center;
     border: 1px solid #e0e0e0;
     vertical-align: middle;
-	max-width: 150px;
+    max-width: 150px;
     word-wrap: break-word;
     white-space: normal;
 }
@@ -167,63 +167,158 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
     background: #f8f9fa;
     font-weight: 600;
     color: #555;
-    font-size: 15px;
+    font-size: 90%;
 }
 
-.class-cell {
-    background: #e3f2fd;
+/* ===== Timetable layout ===== */
+
+#eventLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.time-slot-cell {
+    position: relative;
+    height: 64px;
+    padding: 0;
+}
+
+.session-block-wrapper {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+.session-block-wrapper:hover .session-block-part {
+    filter: brightness(1.05);
+}
+
+
+.session-block {
+    position: absolute;
+	width: 100%;
+	left:0;
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
+	pointer-events: auto;
+}
+
+.session-block-part {
+    position: absolute;
+	width: 100%;
+	left:0;
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
+	pointer-events: auto;
+}
+
+.session-block:hover {
+    box-shadow: 0 0 0 2px rgba(80,140,255,0.4),
+                0 8px 24px rgba(80,140,255,0.35);
+    transform: translateY(-1px);
+	filter: brightness(1.05);
+}
+
+/* Container for overlapping sessiones */
+.session-cell-container {
+    padding: 0 !important;
+    background: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 60px;
+}
+
+/* Split session styling for overlapping sessions */
+.session-split {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 4px;
+    border-right: 1px solid #fff;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+.session-split:last-child {
+    border-right: none;
+}
+
+/* Alternating color sessiones */
+.session-color-1 {
+    background: #2c82c9;
+}
+
+.session-color-2 {
+    background:  #FFD700;
+}
+
+.session-cell {
     position: relative;
 }
 
-.class-button {
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.class-button:hover {
-    background: #90caf9 !important;
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.class-button:active {
+.session-button:active {
     transform: scale(0.98);
 }
 
-.class-info {
+.session-info {
     display: flex;
     flex-direction: column;
     gap: 5px;
-	word-wrap: break-word;
+    word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+	height: 100%;
 }
 
-.class-info strong {
+.session-info strong {
     color: #1976d2;
-    font-size: 14px;
-	word-wrap: break-word;
+    font-size: 100%;
+    word-wrap: normal;
     white-space: normal;
 }
 
+.session-color-1 .session-info strong {
+    color: #FFD700;
+}
+
 .time-range {
-    font-size: 11px;
+    font-size: 90%;
     color: #0d47a1;
-    font-weight: 600;
-	white-space: nowrap;
+    font-weight: 1000;
+    word-wrap: none;
+    white-space: normal;
+}
+
+.session-color-1 .time-range {
+    color: #d4b70d;
 }
 
 .location-label {
-    font-size: 11px;
-    color: #888;
+    font-size: 90%;
+	font-weight: 500;
+    color: #292929;
     font-style: italic;
-	word-wrap: break-word;
+    word-wrap: break-word;
     white-space: normal;
 }
 
 .date-label {
     font-size: 12px;
-    color: #666;
+    color: #292929;
 }
 
 .time-break-row {
@@ -277,6 +372,51 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
     color: #666;
     margin-bottom: 10px;
 }
+
+.warning {
+	position: absolute;
+    top: 70px;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+	z-index: 1;
+	background: #808080ad;
+	color: #ffffff;
+	text-align: center;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10%;
+}
+
+.warning .hide {
+	display: none;
+}
+
+.registration-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    height: 60px;
+    margin: 40px auto 0;
+
+    background: #1daef7c2;
+    color: white;
+    text-decoration: none;
+
+    border: 1px solid white;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.registration-button:hover {
+    background: #1698d8;
+}
+
+
+
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
@@ -373,42 +513,8 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
 		width: 100%;
 	}
     
-    .timetable-header {
-        gap: 15px;
-    }
-    
-    .week-display {
-        font-size: 16px;
-        min-width: 200px;
-    }
-    
-    .week-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-    
-    .timetable-grid th,
-    .timetable-grid td {
-        padding: 12px 8px;
-        font-size: 12px;
-    }
-    
-    .class-info strong {
-        font-size: 12px;
-    }
-    
-    .time-range {
-        font-size: 9px;
-    }
-    
-    .location-label {
-        font-size: 9px;
-    }
-    
-    .date-label {
-        font-size: 10px;
-    }
+
+
     
     .break-dots {
         font-size: 14px;
@@ -478,6 +584,11 @@ body.other nav.navbar .navbar-nav > li > a:not(.btn) {
     width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+#product-sections.shifted .product-grid .product-card .product-image {
+    padding-left: 10%;
+	padding-right: 10%;
 }
 
 .product-title {
@@ -897,6 +1008,52 @@ nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
 	background: #bbb;
 }
 
+.play-button {
+	color: gold;
+	position: absolute;
+	right: 5%;
+	line-height: 2.5;
+	font-size: 40px;
+}
+
+.play-button.alt {
+	color: #2c82c9;
+}
+
+.play-button.active {
+	transform: rotate(180deg);
+	
+}
+
+.play-section {
+	margin: auto;
+	margin-top: 90px;
+	width: 70%;
+}
+
+.play-dropdown {
+	position: relative;
+	height: 100px;
+	text-align: center;
+}
+
+.play-dropdown:hover {
+	filter: brightness(1.1);
+}
+
+
+.session-info-section {
+	display: none;
+	width: 100%;
+	height: 200px;
+	background: #f0f0f0;
+}
+
+.session-info-section.active {
+	display: block;
+	
+}
+
 /* Blink Cursor */
 
 .blink {
@@ -1176,8 +1333,9 @@ section {
 }
 
 .team {
-	margin: 80px 0;
-	padding-bottom: 60px;
+	margin: 0 0;
+	margin-top: 25%;
+	padding-bottom: 1px;
 	background: white;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.07);
 }
@@ -1400,6 +1558,11 @@ footer .social-footer li:hover a {
 	background: transparent;
 	-webkit-transition: background-color 0.3s;
 	transition: background-color 0.3s;
+}
+
+.form-control.form-white::placeholder {
+  color: white;
+  opacity: 1; /* Fixes potential opacity issues in Firefox */
 }
 
 .form-control.form-grey {

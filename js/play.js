@@ -16,7 +16,6 @@ jQuery(function($) {
 			});
 		});
 
-
 		// Sliders Init
 		$('.owl-schedule').owlCarousel({
 			singleItem: true,
@@ -37,16 +36,7 @@ jQuery(function($) {
 			pagination: true
 		});
 
-		// Navbar Init
-		$('nav').addClass('original').clone().insertAfter('nav').addClass('navbar-fixed-top').css('position', 'fixed').css('top', '0').css('margin-top', '0').removeClass('original');
 		
-		
-
-		// Typing Intro Init
-		$(".typed").typewriter({
-			speed: 60
-		});
-
 		// Popup Form Init
 		var i = 0;
 		var interval = 0.15;
@@ -54,73 +44,46 @@ jQuery(function($) {
 			$(this).css('animation-delay', i + "s");
 			i += interval;
 		});
+
 		$('.popup-form .dropdown-menu li a').click(function(event) {
 			event.preventDefault();
-			$(this).parent().parent().prev('button').html($(this).html());
+			
+			// Get the selected text
+			var selectedText = $(this).text();
+			
+			// Update the button text (traverse up to ul, then to button)
+			$(this).closest('.dropdown-menu').siblings('#dLabel').text(selectedText);
+			
+			// Close the dropdown
+			$(this).closest('.dropdown').removeClass('open');
+			
+			// Optional: Add visual feedback on mobile
+			$(this).parent().addClass('active');
+			setTimeout(() => {
+				$('.dropdown-menu li').removeClass('active');
+			}, 300);
 		});
 
-		// Onepage Nav
-		$('.navbar.navbar-fixed-top .navbar-nav').onePageNav({
-			currentClass: 'active',
-			changeHash: false,
-			scrollSpeed: 400,
-			scrollOffset: - 1000,
-			filter: ':not(.btn)'
+		// MOBILE NAV MENU
+
+		$('body').on('click', '.mobile-menu-toggle', function() {
+			$('nav.navbar .navbar-nav').addClass('active');
+			$('.mobile-menu-toggle').addClass('active');
+		});
+
+		$('body').on('click', '.mobile-menu-toggle.active', function() {
+			$('nav.navbar .navbar-nav').removeClass('active');
+			$('.mobile-menu-toggle').removeClass('active');
 		});
 	
-		$(window).scroll(function() {
-			if ($(window).scrollTop() > 50 && $(window).width() > 900) {
-				$('nav.navbar').addClass('scrolled');
-			} else {
-				$('nav.navbar').removeClass('scrolled');
-			}
+
+		// Window Resize
+		$(window).resize(function() {
+			$('header').height($(window).height());
 		});
+
 	
 	});
-	
-	// Window Scroll
-	function onScroll() {
-		if ($(window).scrollTop() > 50) {
-			$('nav.original').css('opacity', '0');
-			$('nav.navbar-fixed-top').css('opacity', '1');
-		} else {
-			$('nav.original').css('opacity', '1');
-			$('nav.navbar-fixed-top').css('opacity', '0');
-		}
-	}
-
-	window.addEventListener('scroll', onScroll, false);
-
-	// Window Resize
-	$(window).resize(function() {
-		$('header').height($(window).height());
-	});
-
-	// Pricing Box Click Event
-	$('.pricing .box-main').click(function() {
-		$('.pricing .box-main').removeClass('active');
-		$('.pricing .box-second').removeClass('active');
-		$(this).addClass('active');
-		$(this).next($('.box-second')).addClass('active');
-		$('#pricing').css("background-image", "url(" + $(this).data('img') + ")");
-		$('#pricing').css("background-size", "cover");
-	});
-
-	// Mobile Nav
-	$('body').on('click', '.mobile-menu-toggle', function() {
-		$('nav.navbar .navbar-nav').addClass('active');
-		$('.mobile-menu-toggle').addClass('active');
-		
-
-	});
-
-	$('body').on('click', '.mobile-menu-toggle.active', function() {
-		$('nav.navbar .navbar-nav').removeClass('active');
-		$('.mobile-menu-toggle').removeClass('active');
-		
-
-	});
-
 
 	function centerModal() {
 		$(this).css('display', 'block');
@@ -145,4 +108,36 @@ jQuery(function($) {
 	$(window).on("resize", function() {
 		$('.modal:visible').each(centerModal);
 	});
+
+
+
+	document.getElementById("warning").addEventListener("click", () => {
+		document.getElementById("warning").classList.toggle("hide");
+	});
+
+	document.getElementById("womens-dropdown").addEventListener("click", () => {
+		document.getElementById("womens-button").classList.toggle("active");
+		document.getElementById("womens-info").classList.toggle("active");
+	});
+
+	document.getElementById("mens-dropdown").addEventListener("click", () => {
+		document.getElementById("mens-button").classList.toggle("active");
+		document.getElementById("mens-info").classList.toggle("active");
+	});
+
+	document.getElementById("beginners-dropdown").addEventListener("click", () => {
+		document.getElementById("beginners-button").classList.toggle("active");
+		document.getElementById("beginners-info").classList.toggle("active");
+	});
+
+	document.getElementById("social-dropdown").addEventListener("click", () => {
+		document.getElementById("social-button").classList.toggle("active");
+		document.getElementById("social-info").classList.toggle("active");
+	});
+
+	document.getElementById("scrimmage-dropdown").addEventListener("click", () => {
+		document.getElementById("scrimmage-button").classList.toggle("active");
+		document.getElementById("scrimmage-info").classList.toggle("active");
+	});
+
 });

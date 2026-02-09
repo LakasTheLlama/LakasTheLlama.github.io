@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Central Coast Volleyball Club</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="ccvc, CCVC, Central Coast, Volleyball, Volleyball Club, Central Coast Volleyball Club" />
+	<meta name="author" content="CCVC" />
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="img/CCVC LOGO.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/CCVC LOGO.png">
+	<link rel="icon" type="image/png" href="img/CCVC LOGO.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="img/CCVC LOGO.png" sizes="16x16">
+	<link rel="manifest" href="img/CCVC LOGO.png">
+	<link rel="shortcut icon" href="img/CCVC LOGO.png">
+	<meta name="msapplication-TileColor" content="#00a8ff">
+	<meta name="theme-color" content="#ffffff">
+	<!-- Normalize -->
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<!-- Owl -->
+	<link rel="stylesheet" type="text/css" href="css/owl.css">
+	<!-- Animate.css -->
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.1.0/css/font-awesome.min.css">
+	<!-- Elegant Icons -->
+	<link rel="stylesheet" type="text/css" href="fonts/eleganticons/et-icons.css">
+	<!-- Main style -->
+	<link rel="stylesheet" type="text/css" href="css/CCVC.css">
+</head>
+
+<body class="other"> 
+	<!-- Preloader -->
+	<div class="preloader">
+		<img src="img/loader.gif" alt="Preloader image">
+	</div>
+
+	<!-- Navbar -->
+	<nav class="navbar">
+
+		<button class="mobile-menu-toggle" aria-label="Toggle navigation">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
+		<div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/CCVC LOGO.png" alt="CCVC Logo">
+            </a>
+			<ul class="nav navbar-nav">
+            <li class="active"><a href="play.html">Play</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#team">T's & C's</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="merch.html">Merch</a></li>
+            <li><a href="#" class="btn btn-blue">FAQ</a></li>
+        </ul>
+		</div>
+		
+	</nav>
+
+    <section id="timetable" style="margin-top: 110px;">
+		
+        <div class="container" style="width: 70%";>
+
+			<div id="warning">
+				<div class="warning">
+					<h1 style="color: white;"> 
+						You must be registered with our club to step onto the court.
+					</h1>
+					<a href="registration.html" class="registration-button">
+						Registration
+					</a>
+					<h5 style="color: white;"> 
+						Otherwise: click anywhere to view timetable.
+					</h5>
+				</div>
+				
+			</div>
+            
+            <div class="timetable-header">
+                <button class="week-nav prev-week" id="prevWeek"></button>
+                <h3 class="week-display" id="weekDisplay"></h3>
+                <button class="week-nav next-week" id="nextWeek"></button>
+            </div>
+            
+            <div id="timetable-wrapper" class="timetable-wrapper">
+                <table class="timetable-grid">
+                    <thead>
+                        <tr>
+                            <th class="time-column">Time</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetableBody">
+                        <!-- Timetable will be populated by JavaScript -->
+                    </tbody>
+                </table>
+                <div id="eventLayer"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="womens" class="play-section" >
+		<div id="womens-dropdown" class="play-dropdown session-color-1" >
+			<p id="womens-button" class="play-button">
+				&#9660
+			</p>
+			<h2 style="color: gold; line-height: 2;">
+				Womens & Girls Representatives
+			</h2>
+		</div>
+		<div id="womens-info" class="session-info-section">
+			<h3> heres the info</h3>
+		</div>
+    </section>
+
+    <section id="mens" class="play-section" >
+		<div id="mens-dropdown" class="play-dropdown session-color-2" >
+			<p id="mens-button" class="play-button alt">
+				&#9660
+			</p>
+			<h2 style="color: #2c82c9; line-height: 2;">
+				Mens & Boys Representatives
+			</h2>
+		</div>
+		<div id="mens-info" class="session-info-section">
+			<h3> heres the info</h3>
+		</div>
+    </section>
+
+	<section id="beginners" class="play-section" >
+		<div id="beginners-dropdown" class="play-dropdown session-color-1" >
+			<p id="beginners-button" class="play-button">
+				&#9660
+			</p>
+			<h2 style="color: gold; line-height: 2;">
+				Beginners Training
+			</h2>
+		</div>
+		<div id="beginners-info" class="session-info-section">
+			<h3> heres the info</h3>
+		</div>
+    </section>
+
+	<section id="social" class="play-section" >
+		<div id="social-dropdown" class="play-dropdown session-color-2" >
+			<p id="social-button" class="play-button alt">
+				&#9660
+			</p>
+			<h2 style="color: #2c82c9; line-height: 2;">
+				Social Competition
+			</h2>
+		</div>
+		<div id="social-info" class="session-info-section">
+			<h3> heres the info</h3>
+		</div>
+    </section>
+
+	<section id="scrimmage" class="play-section" >
+		<div id="scrimmage-dropdown" class="play-dropdown session-color-1" >
+			<p id="scrimmage-button" class="play-button">
+				&#9660
+			</p>
+			<h2 style="color: gold; line-height: 2;">
+				Scrimmage Training
+			</h2>
+		</div>
+		<div id="scrimmage-info" class="session-info-section">
+			<h3> heres the info</h3>
+		</div>
+    </section>
+
+	<section style="height: 100px;">
+
+	</section>
+
+    
+
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/typewriter.js"></script>
+	<script src="js/jquery.onepagenav.js"></script>
+	<script src="js/play.js"></script>
+    <script src="js/timetable.js"></script>
+	<script src="https://apis.google.com/js/platform.js"></script>
+	<script src="https://iframely.net/embed.js"></script>
+</body>
+<html>
+
+
