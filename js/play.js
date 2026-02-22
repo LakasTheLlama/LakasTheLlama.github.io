@@ -115,29 +115,20 @@ jQuery(function($) {
 		document.getElementById("warning").classList.toggle("hide");
 	});
 
-	document.getElementById("womens-dropdown").addEventListener("click", () => {
-		document.getElementById("womens-button").classList.toggle("active");
-		document.getElementById("womens-info").classList.toggle("active");
-	});
+	$(".play-dropdown").on("click", function (e) {
+		e.stopPropagation();
 
-	document.getElementById("mens-dropdown").addEventListener("click", () => {
-		document.getElementById("mens-button").classList.toggle("active");
-		document.getElementById("mens-info").classList.toggle("active");
-	});
+		const section = $(this).closest(".play-section");
+		const wasActive = section.hasClass("active");
 
-	document.getElementById("beginners-dropdown").addEventListener("click", () => {
-		document.getElementById("beginners-button").classList.toggle("active");
-		document.getElementById("beginners-info").classList.toggle("active");
-	});
+		// close everything
+		$(".play-section").removeClass("active");
 
-	document.getElementById("social-dropdown").addEventListener("click", () => {
-		document.getElementById("social-button").classList.toggle("active");
-		document.getElementById("social-info").classList.toggle("active");
-	});
-
-	document.getElementById("scrimmage-dropdown").addEventListener("click", () => {
-		document.getElementById("scrimmage-button").classList.toggle("active");
-		document.getElementById("scrimmage-info").classList.toggle("active");
+		// only reopen if it wasn't already active
+		if (!wasActive) {
+			section.addClass("active");
+			section[0].scrollIntoView({ behavior: "smooth", block: "start" });
+		}
 	});
 
 });
