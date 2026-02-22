@@ -101,7 +101,7 @@ function getSlotSpan(slots, start, end) {
 // =====================
 // Rendering helpers
 // =====================
-function getClassType(cls) {
+function getSessionType(cls) {
     const name = cls.session.toLowerCase();
     if (name.includes('women')) return 'session-color-1';
     if (name.includes('men')) return 'session-color-2';
@@ -224,7 +224,7 @@ function renderEventLayer(schedule, days, slots, weekDates) {
             
             // Create the main container block
             const block = $(`
-                <div class="session-block ${getClassType(cls)}" 
+                <div class="session-block ${getSessionType(cls)}" 
                      style="position: absolute; 
                             top: ${blockTop}px; 
                             left: ${blockLeft}px; 
@@ -259,7 +259,7 @@ function renderEventLayer(schedule, days, slots, weekDates) {
                 `);
 
                 const overlapSection = $(`
-                    <div class="session-block-part ${getClassType(cls)}" 
+                    <div class="session-block-part ${getSessionType(cls)}" 
                          style="position: absolute; 
                                 top: 0; 
                                 left: ${splitLeft}px; 
@@ -270,7 +270,7 @@ function renderEventLayer(schedule, days, slots, weekDates) {
                 
                 // Create the non-overlap section (bottom vertical bar of L - full width)
                 const fullSection = $(`
-                    <div class="session-block-part ${getClassType(cls)}" 
+                    <div class="session-block-part ${getSessionType(cls)}" 
                          style="position: absolute; 
                                 top: ${fullWidthTop}px; 
                                 left: 0; 
@@ -285,7 +285,7 @@ function renderEventLayer(schedule, days, slots, weekDates) {
                     </div>
                 `);
 
-                block.removeClass(getClassType(cls));
+                block.removeClass(getSessionType(cls));
                 
                 wrapper.append(overlapSection);
                 wrapper.append(fullSection);
@@ -304,7 +304,15 @@ function renderEventLayer(schedule, days, slots, weekDates) {
             
             block.data('cls', cls);
             block.data('dayIndex', dayIndex);
-            block.click(() => window.location.href = cls.link);
+            block.on("click", () => {
+                // navigate
+                window.location.href = cls.link;
+
+                // open dropdown
+                $(`${cls.link}`).addClass('active');
+            });
+
+
             
             eventLayer.append(block);
         });
