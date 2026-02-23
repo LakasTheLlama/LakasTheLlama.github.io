@@ -36,33 +36,13 @@
 
 <body class="other">
 <!-- Preloader -->
-	<div class="preloader">
-		<img src="img/loader.gif" alt="Preloader image">
-	</div>
+	
 
 	<!-- Navbar -->
-	<nav class="navbar">
+	<div id="navbar-placeholder"></div>
 
-		<button class="mobile-menu-toggle" aria-label="Toggle navigation">
-			<span></span>
-			<span></span>
-			<span></span>
-		</button>
 
-		<div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/CCVC LOGO.png" alt="CCVC Logo">
-            </a>
-			<ul class="nav navbar-nav">
-            <li><a href="play.html">Play</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li class="active"><a href="merch.html">Merch</a></li>
-            <li><a href="faq.html" class="btn btn-blue">FAQ</a></li>
-        </ul>
-		</div>
-		
-	</nav>
+    
     <section class="product-section" id="product-sections">  
         <div class="product-grid">
             <div class="product-card" onclick="openProductDetail(this)" 
@@ -223,40 +203,8 @@
         </div>
     </div>
 
-    <script>
-        function openProductDetail(card) {
-            // Get product data from card
-            const image = card.dataset.image;
-            const title = card.dataset.title;
-            const description = card.dataset.description;
-            const priceMember = card.dataset.priceMember;
-            const pricePublic = card.dataset.pricePublic;
 
-            // Populate detail panel
-            document.getElementById('detailImage').src = image;
-            document.getElementById('detailTitle').textContent = title;
-            document.getElementById('detailDescription').textContent = description;
-            document.getElementById('detailPriceMember').textContent = priceMember;
-            document.getElementById('detailPricePublic').textContent = pricePublic;
-
-            // Shift grid and open panel
-            document.getElementById('product-sections').classList.add('shifted');
-            document.getElementById('productDetailPanel').classList.add('open');
-
-            // Highlight active card
-            document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-        }
-
-        function closeProductDetail() {
-            // Reset grid and close panel
-            document.getElementById('product-sections').classList.remove('shifted');
-            document.getElementById('productDetailPanel').classList.remove('open');
-
-            // Remove active highlight
-            document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
-        }
-    </script>
+    <div id="footer-placeholder"></div>
 
     <script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>

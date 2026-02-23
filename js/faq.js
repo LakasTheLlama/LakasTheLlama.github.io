@@ -25,3 +25,11 @@ document.querySelectorAll('.faq-question').forEach(button => {
         }
     });
 });
+
+$(function() {
+    $("#footer-placeholder").load("footer.html");
+}); 
+
+$(function() {
+    $("#navbar-placeholder").load("navbar.html");
+}); 

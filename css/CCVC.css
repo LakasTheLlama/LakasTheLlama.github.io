@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
 
+html {
+    scrollbar-gutter: stable;
+}
+
 :root {
 	--color-bg: #faf8f5;
 	--color-text: #1a1512;
@@ -907,7 +911,7 @@ nav.navbar .navbar-nav li.active a:not(.btn) {
 nav.navbar.scrolled {
 	background: white;
 	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
-	padding: 10px 0;
+	padding: 0 0;
 }
 
 nav.navbar.scrolled .navbar-brand img {
@@ -1016,13 +1020,15 @@ nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
 }
 
 .play-section {
-	margin: auto;
+	width: 100%;
 	margin-top: 90px;
-	width: 70%;
+	
 }
 
 .play-section .play-dropdown {
 	position: relative;
+	margin: auto;
+	width: 70%;
 	height: 100px;
 	text-align: center;
 }
@@ -1056,8 +1062,9 @@ nav.navbar.scrolled .navbar-nav > li > a:not(.btn):hover {
 .play-section .play-info {
 	display: none;
 	width: 100%;
-	height: 200px;
-	background: #f0f0f0;
+	height: fit-content;
+	padding-bottom: 30px;
+	margin: 0 10%;
 }
 
 .play-section.active .play-info {

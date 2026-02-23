@@ -108,4 +108,45 @@ jQuery(function($) {
 	$(window).on("resize", function() {
 		$('.modal:visible').each(centerModal);
 	});
+
+	$(function() {
+		$("#footer-placeholder").load("footer.html");
+	}); 
+	
+	$(function() {
+		$("#navbar-placeholder").load("navbar.html");
+	}); 
+
+	function openProductDetail(card) {
+		// Get product data from card
+		const image = card.dataset.image;
+		const title = card.dataset.title;
+		const description = card.dataset.description;
+		const priceMember = card.dataset.priceMember;
+		const pricePublic = card.dataset.pricePublic;
+
+		// Populate detail panel
+		document.getElementById('detailImage').src = image;
+		document.getElementById('detailTitle').textContent = title;
+		document.getElementById('detailDescription').textContent = description;
+		document.getElementById('detailPriceMember').textContent = priceMember;
+		document.getElementById('detailPricePublic').textContent = pricePublic;
+
+		// Shift grid and open panel
+		document.getElementById('product-sections').classList.add('shifted');
+		document.getElementById('productDetailPanel').classList.add('open');
+
+		// Highlight active card
+		document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
+		card.classList.add('active');
+	}
+
+	function closeProductDetail() {
+		// Reset grid and close panel
+		document.getElementById('product-sections').classList.remove('shifted');
+		document.getElementById('productDetailPanel').classList.remove('open');
+
+		// Remove active highlight
+		document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
+	}
 });

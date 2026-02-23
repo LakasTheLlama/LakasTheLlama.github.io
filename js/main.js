@@ -145,4 +145,12 @@ jQuery(function($) {
 	$(window).on("resize", function() {
 		$('.modal:visible').each(centerModal);
 	});
+
+	$(function() {
+		$("#footer-placeholder").load("footer.html");
+	}); 
+	
+	$(function() {
+		$("#navbar-placeholder").load("navbar.html");
+	}); 
 });
