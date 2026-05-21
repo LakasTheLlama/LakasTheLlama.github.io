@@ -2257,3 +2257,56 @@ footer .social-footer li:hover a {
 }
 
 
+.match-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+}
+
+.match-teams {
+    display: flex;
+    width: 100%;
+}
+
+.team {
+    flex: 1;
+    padding: 22px 8px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+   	margin: 5% 0;
+}
+
+.team1 {
+    background-color: #da3b3b;
+    border-radius: 12px 0 0 12px;
+    margin-right: -6px; /* overlap like the image */
+    z-index: 1;
+}
+
+.team2 {
+    background-color: #5b9bd5;
+    border-radius: 0 12px 12px 0;
+	z-index: 1;
+}
+
+.duty-bar {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+	padding: 3px 16px;
+	padding-top: 30px;
+    
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    margin-top: -39px; /* tuck under the teams slightly */
+    z-index: 0;
+    position: relative;
+}
+
+.time-column {
+
+	font-size: 2.5rem !important;
+}

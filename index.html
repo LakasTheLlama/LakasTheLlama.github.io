@@ -110,6 +110,36 @@
 			</div>
 		</div>
 	</section>
+	<div style="margin: 15px;">
+		<h1 style="margin:auto; width:fit-content";> Social Comp Games</h1>
+	</div>
+	
+	<div class="timetable-header">
+        <button class="week-nav prev-week" id="prevWeek"></button>
+            <h3 id="dateTitle"></h1>
+        <button class="week-nav next-week" id="nextWeek"></button>
+    </div>
+	<div class="timetable-wrapper" style="width: 60%; margin:auto;"> 
+		<table id="schedule" class="timetable-grid" >
+			<colgroup>
+				<col style="width: 120px">
+				<col>
+				<col>
+				<col>
+			</colgroup>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Court 1</th>
+					<th>Court 2</th>
+					<th>Court 3</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+	</div>
+	
 
 	<section id="intro">
 		<div style="margin: 100px;">
@@ -302,7 +332,8 @@ CCVC aims to provide opportunities for all people to enjoy sport, make new frien
 	<script src="js/typewriter.js"></script>
 	<script src="js/jquery.onepagenav.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/timetable.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+	<script src="js/socialTable.js"></script>
 	<script src="https://apis.google.com/js/platform.js"></script>
 	<script src="https://iframely.net/embed.js"></script>
 </body>
