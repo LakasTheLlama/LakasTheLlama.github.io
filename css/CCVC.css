@@ -887,11 +887,13 @@ nav.navbar .navbar-nav {
 	right: 0;
 	display: flex;
 	list-style: none;
+	
 	margin: 0;
 	padding: 0;
 	top: 10px;
 	align-items: center;
 	gap: 5%;
+	justify-content: flex-end;
 }
 
 nav.navbar .navbar-nav li {
@@ -2326,9 +2328,10 @@ footer .social-footer li:hover a {
 
 .social-grid {
 	position: relative;
-	top: -160px;
+	top: -120px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20%, 1px));
+	justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(17%, 1px));
     gap: 30px;
 }
 
@@ -2363,6 +2366,7 @@ footer .social-footer li:hover a {
     font-size: 14px;
     line-height: 1.2;
 	color: white;
+	margin: 0;
 }
 
 .social-card p {
@@ -2420,6 +2424,16 @@ footer .social-footer li:hover a {
             135deg,
 			#3b72eb,
             #294cad
+            
+        );
+}
+
+.whatsapp {
+    background:
+        linear-gradient(
+            210deg,
+			#00b200,
+            green
             
         );
 }

@@ -75,7 +75,7 @@ jQuery(function($) {
 			$('nav.navbar .navbar-nav').removeClass('active');
 			$('.mobile-menu-toggle').removeClass('active');
 		});
-	
+	});
 
 	// Window Resize
 	$(window).resize(function() {
@@ -149,4 +149,3 @@ jQuery(function($) {
 		// Remove active highlight
 		document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
 	}
-});
