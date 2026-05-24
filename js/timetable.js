@@ -1,391 +1,243 @@
-// =====================
-// State
-// =====================
-let currentWeekOffset = 0;
-const SLOT_HEIGHT = 64; // must match .time-slot-cell height in CSS
+/* =============================================================
+   CCVC TIMETABLE  –  js/timetable.js
+   Weekly session timetable for play.html.
+   Edit TT_DEFAULT_SCHEDULE at the bottom to update sessions.
+   ============================================================= */
 
-// =====================
-// Date helpers
-// =====================
-function getWeekKey(date) {
-    return date.toISOString().split('T')[0];
+let ttWeekOffset = 0;
+
+/* ── Date helpers ────────────────────────────────────────── */
+function ttGetWeekKey(date) { return date.toISOString().split('T')[0]; }
+
+function ttGetWeekDates(offset) {
+  const today  = new Date();
+  const day    = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - day + (day === 0 ? -6 : 1) + offset * 7);
+  monday.setHours(0, 0, 0, 0);
+  return Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(monday); d.setDate(monday.getDate() + i); return d;
+  });
 }
 
-function getWeekDates(offset) {
-    const today = new Date();
-    const day = today.getDay();
-    const diff = today.getDate() - day + (day === 0 ? -6 : 1);
-    const monday = new Date(today.setDate(diff));
-    monday.setDate(monday.getDate() + offset * 7);
-
-    return Array.from({ length: 7 }, (_, i) => {
-        const d = new Date(monday);
-        d.setDate(monday.getDate() + i);
-        return d;
-    });
+function ttFormatRange(dates) {
+  const f = d => d.getDate() + '/' + (d.getMonth() + 1);
+  return f(dates[0]) + ' – ' + f(dates[6]) + ', ' + dates[0].getFullYear();
 }
 
-function formatDateRange(dates) {
-    return `${dates[0].getDate()}/${dates[0].getMonth() + 1} - ${dates[6].getDate()}/${dates[6].getMonth() + 1}, ${dates[0].getFullYear()}`;
+/* ── Time helpers ────────────────────────────────────────── */
+function ttTo24(time) {
+  const [t, mod] = time.split(' ');
+  let [h, m] = t.split(':').map(Number);
+  if (mod === 'PM' && h !== 12) h += 12;
+  if (mod === 'AM' && h === 12) h = 0;
+  return h * 60 + (m || 0);
 }
 
-// =====================
-// Time helpers
-// =====================
-function convertTo24Hour(time) {
-    const [t, mod] = time.split(' ');
-    let [h, m] = t.split(':').map(Number);
-    if (mod === 'PM' && h !== 12) h += 12;
-    if (mod === 'AM' && h === 12) h = 0;
-    return h * 60 + (m || 0);
+function ttFromMin(min) {
+  let h = Math.floor(min / 60), m = min % 60;
+  const mod = h >= 12 ? 'PM' : 'AM';
+  if (h > 12) h -= 12; if (h === 0) h = 12;
+  return h + ':' + String(m).padStart(2, '0') + ' ' + mod;
 }
 
-function convertFromMinutes(min) {
-    let h = Math.floor(min / 60);
-    const m = min % 60;
-    const mod = h >= 12 ? 'PM' : 'AM';
-    if (h > 12) h -= 12;
-    if (h === 0) h = 12;
-    return `${h}:${String(m).padStart(2, '0')} ${mod}`;
+/* ── Schedule helpers ────────────────────────────────────── */
+function ttGetSchedule(date) {
+  return TT_WEEKLY_SCHEDULES[ttGetWeekKey(date)] || TT_DEFAULT_SCHEDULE;
 }
 
-// =====================
-// Schedule helpers
-// =====================
-function repeatScheduleForWeeks(startDate, weeks, schedule) {
-    const out = {};
-    const start = new Date(startDate);
-    for (let i = 0; i < weeks; i++) {
-        const d = new Date(start);
-        d.setDate(start.getDate() + i * 7);
-        out[getWeekKey(d)] = schedule;
-    }
-    return out;
+function ttIsEmpty(schedule) {
+  return !schedule || !Object.values(schedule).some(d => d && d.length);
 }
 
-function getScheduleForWeek(date) {
-    return weeklySchedules[getWeekKey(date)] || defaultSchedule;
+function ttGenSlots(schedule) {
+  const set = new Set();
+  Object.values(schedule).forEach(day => (day || []).forEach(s => {
+    const st = ttTo24(s.time), en = ttTo24(s.endTime);
+    for (let m = st; m < en; m += 30) set.add(m);
+  }));
+  return Array.from(set).sort((a,b) => a-b).map(m => ({ minutes: m, time: ttFromMin(m) }));
 }
 
-function isScheduleEmpty(schedule) {
-    return !schedule || !Object.values(schedule).some(d => d && d.length);
+function ttSlotSpan(slots, start, end) {
+  return slots.filter(s => s.minutes >= start && s.minutes < end).length;
 }
 
-// =====================
-// Time slot generation
-// =====================
-function generateTimeSlots(schedule) {
-    const set = new Set();
-
-    Object.values(schedule).forEach(day => {
-        (day || []).forEach(c => {
-            const s = convertTo24Hour(c.time);
-            const e = convertTo24Hour(c.endTime);
-            for (let m = s; m < e; m += 30) set.add(m);
-        });
-    });
-
-    return Array.from(set)
-        .sort((a, b) => a - b)
-        .map(m => ({ minutes: m, time: convertFromMinutes(m) }));
+function ttColor(s) {
+  const n = s.session.toLowerCase();
+  if (n.includes('women') || n.includes('beginner') || n.includes('scrim')) return 'session-color-1';
+  return 'session-color-2';
 }
 
-function getSlotSpan(slots, start, end) {
-    let count = 0;
-    for (const s of slots) {
-        if (s.minutes >= start && s.minutes < end) count++;
-    }
-    return count;
+/* ── Render ──────────────────────────────────────────────── */
+function ttRender() {
+  const weekDates = ttGetWeekDates(ttWeekOffset);
+  const labelEl   = document.getElementById('weekDisplay') || document.getElementById('weekLabel');
+  if (labelEl) labelEl.textContent = ttFormatRange(weekDates);
+
+  const schedule   = ttGetSchedule(weekDates[0]);
+  const tbody      = document.getElementById('timetableBody');
+  const eventLayer = document.getElementById('eventLayer');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+  if (eventLayer) eventLayer.innerHTML = '';
+
+  if (ttIsEmpty(schedule)) {
+    tbody.innerHTML = `<tr><td colspan="8" style="padding:60px 20px;text-align:center;">
+      <div style="font-size:36px;margin-bottom:12px;">📅</div>
+      <h4 style="color:#333;margin-bottom:8px;">No sessions scheduled this week</h4>
+      <p style="color:#777;">Check back later or <a href="contact.html" style="color:var(--blue)">contact us</a>.</p>
+    </td></tr>`;
+    return;
+  }
+
+  const DAYS  = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+  const slots = ttGenSlots(schedule);
+
+  /* Grid rows */
+  slots.forEach(() => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td class="time-slot-cell"></td>' + DAYS.map(() => '<td class="time-slot-cell"></td>').join('');
+    tbody.appendChild(tr);
+  });
+  Array.from(tbody.querySelectorAll('tr')).forEach((tr, i) => {
+    tr.cells[0].textContent = slots[i].time;
+    tr.cells[0].className   = 'time-cell';
+  });
+
+  if (eventLayer) setTimeout(() => ttRenderEvents(schedule, DAYS, slots, weekDates, eventLayer, tbody), 0);
 }
 
-// =====================
-// Rendering helpers
-// =====================
-function getSessionType(cls) {
-    const name = cls.session.toLowerCase();
-    if (name.includes('women')) return 'session-color-1';
-    if (name.includes('men')) return 'session-color-2';
-    if (name.includes('beginner')) return 'session-color-1';
-    if (name.includes('abc')) return 'session-color-2';
-    if (name.includes('scrim')) return 'session-color-1';
-    if (name.includes('social')) return 'session-color-2';
-    
-    return 'other';
-}
+function ttRenderEvents(schedule, days, slots, weekDates, layer, tbody) {
+  const rows       = tbody.querySelectorAll('tr');
+  const rowH       = rows[0] ? rows[0].offsetHeight : 64;
+  const tableTop   = tbody.getBoundingClientRect().top - layer.getBoundingClientRect().top;
+  const headerCells = document.querySelectorAll('.timetable-grid thead th');
 
-// =====================
-// Render timetable
-// =====================
-function renderTimetable() {
-    const weekDates = getWeekDates(currentWeekOffset);
-    $('#weekDisplay').text(formatDateRange(weekDates));
+  days.forEach((day, di) => {
+    const daySessions = schedule[day] || [];
+    const dateStr     = weekDates[di].getDate() + '/' + (weekDates[di].getMonth() + 1);
+    const hCell       = headerCells[di + 1];
+    if (!hCell) return;
 
-    const schedule = getScheduleForWeek(weekDates[0]);
-    const tbody = $('#timetableBody').empty();
-    const eventLayer = $('#eventLayer').empty();
+    const colLeft  = hCell.offsetLeft;
+    const colWidth = hCell.offsetWidth;
 
-    if (isScheduleEmpty(schedule)) {
-        tbody.append(`
-            <tr>
-                <td colspan="8" class="empty-schedule">
-                    <div class="empty-schedule-message">
-                        <div class="empty-calendar-icon">📅</div>
-                        <h4>No sessions scheduled</h4>
-                        <p>There are currently no sessions scheduled for this week.</p>
-                        <p>Check back later or contact us for more information.</p>
-                    </div>
-                </td>
-            </tr>
-        `);
-        return;
-    }
-
-    const days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-    const slots = generateTimeSlots(schedule);
-
-    // Step 1: Render the grid (just empty cells)
-    slots.forEach(slot => {
-        const row = $('<tr>');
-        row.append(`<td class="time-cell">${slot.time}</td>`);
-
-        days.forEach(() => {
-            row.append('<td class="time-slot-cell"></td>');
-        });
-
-        tbody.append(row);
+    /* Overlap map */
+    const overlaps = new Map();
+    daySessions.forEach(s => {
+      const sMin = ttTo24(s.time), eMin = ttTo24(s.endTime);
+      slots.forEach((slot, si) => {
+        if (slot.minutes >= sMin && slot.minutes < eMin) {
+          if (!overlaps.has(si)) overlaps.set(si, []);
+          const arr = overlaps.get(si);
+          if (!arr.find(x => x.time === s.time)) arr.push(s);
+        }
+      });
     });
 
-    // Step 2: Calculate positions and render event blocks
-    // Wait for DOM to update so we can measure cell positions
-    setTimeout(() => {
-        renderEventLayer(schedule, days, slots, weekDates);
-    }, 0);
-}
+    daySessions.forEach(s => {
+      const sMin = ttTo24(s.time), eMin = ttTo24(s.endTime);
+      const si   = slots.findIndex(sl => sl.minutes === sMin);
+      if (si === -1) return;
 
-function renderEventLayer(schedule, days, slots, weekDates) {
-    const eventLayer = $('#eventLayer');
-    const tbody = $('#timetableBody');
-    const firstRow = tbody.find('tr').first();
-    
-    if (firstRow.length === 0) return;
+      const span       = ttSlotSpan(slots, sMin, eMin);
+      const overlapping = overlaps.get(si) || [];
+      const isOverlap   = overlapping.length > 1;
+      const top  = tableTop + si * rowH;
+      const h    = span * rowH;
 
-    const rowHeight = firstRow.outerHeight();
-    const tableTop = tbody.position().top;
+      const block = document.createElement('div');
+      block.className = 'session-block ' + ttColor(s);
+      block.style.cssText = `position:absolute;top:${top}px;left:${colLeft+2}px;width:${colWidth-4}px;height:${h}px;`;
 
-    days.forEach((day, dayIndex) => {
-        const daysessiones = schedule[day] || [];
-        const dateStr = weekDates[dayIndex].getDate() + '/' + (weekDates[dayIndex].getMonth() + 1);
-        
-        // Get the column position
-        const headerCell = $('thead th').eq(dayIndex + 1);
-        const colLeft = headerCell.position().left;
-        const colWidth = headerCell.outerWidth();
+      if (isOverlap) {
+        const oi        = overlapping.findIndex(x => x.time === s.time);
+        const n         = overlapping.length;
+        const overlapEnd = Math.min(...overlapping.map(x => ttTo24(x.endTime)));
+        const oSpan     = ttSlotSpan(slots, sMin, overlapEnd);
+        const oH        = oSpan * rowH;
+        const splitW    = (colWidth - 4) / n;
 
-        // Track which sessiones overlap at each time slot
-        const overlaps = new Map();
-        
-        daysessiones.forEach(cls => {
-            const startMin = convertTo24Hour(cls.time);
-            const endMin = convertTo24Hour(cls.endTime);
-            
-            slots.forEach((slot, slotIndex) => {
-                if (slot.minutes >= startMin && slot.minutes < endMin) {
-                    if (!overlaps.has(slotIndex)) {
-                        overlaps.set(slotIndex, []);
-                    }
-                    const existing = overlaps.get(slotIndex);
-                    if (!existing.find(c => c.time === cls.time)) {
-                        existing.push(cls);
-                    }
-                }
-            });
-        });
+        block.classList.remove(ttColor(s));
+        const wrapper  = document.createElement('div');
+        wrapper.className = 'session-block-wrapper';
 
-        // Render each session
-        daysessiones.forEach((cls, sessionIndex) => {
-            const startMin = convertTo24Hour(cls.time);
-            const endMin = convertTo24Hour(cls.endTime);
-            
-            const startSlotIndex = slots.findIndex(s => s.minutes === startMin);
-            if (startSlotIndex === -1) return;
+        const top1 = document.createElement('div');
+        top1.className = 'session-block-part ' + ttColor(s);
+        top1.style.cssText = `position:absolute;top:0;left:${oi*splitW}px;width:${splitW}px;height:${oH+rowH}px;`;
 
-            const spanSlots = getSlotSpan(slots, startMin, endMin);
-            
-            // Check for overlaps at start time
-            const overlappingsessiones = overlaps.get(startSlotIndex) || [];
-            const isOverlapping = overlappingsessiones.length > 1;
-            
-            
-            // Calculate base position and size
-            const blockTop = tableTop + (startSlotIndex * rowHeight);
-            const blockHeight = spanSlots * rowHeight;
-            const blockLeft = colLeft + 2;
-            const blockWidth = colWidth - 4;
-            
-            // Create the main container block
-            const block = $(`
-                <div class="session-block ${getSessionType(cls)}" 
-                     style="position: absolute; 
-                            top: ${blockTop}px; 
-                            left: ${blockLeft}px; 
-                            width: ${blockWidth}px; 
-                            height: ${blockHeight}px;">
-                </div>
-            `);
-            
-            // If overlapping, create L-shape
-            if (isOverlapping) {
-                const sessionIndexInOverlap = overlappingsessiones.findIndex(c => c.time === cls.time);
-                const numOverlapping = overlappingsessiones.length;
-                
-                // Calculate overlap duration
-                const overlapEndMin = Math.min(...overlappingsessiones.map(c => convertTo24Hour(c.endTime)));
-                const overlapSlots = getSlotSpan(slots, startMin, overlapEndMin);
-                const overlapHeight = overlapSlots * rowHeight;
-                
-                // Calculate dimensions for split section (horizontal top part of L)
-                const splitWidth = blockWidth / numOverlapping;
-                const splitLeft = sessionIndexInOverlap * splitWidth;
-                
-                // Non-overlap height (vertical part of L)
-                const fullWidthTop = overlapHeight;
-                const fullWidthHeight = blockHeight - overlapHeight;
-                
-                // Create the overlap section (top horizontal bar of L - narrow)
+        const bot = document.createElement('div');
+        bot.className = 'session-block-part ' + ttColor(s);
+        bot.style.cssText = `position:absolute;top:${oH}px;left:0;width:100%;height:${h-oH}px;`;
+        bot.innerHTML = `<div class="session-info"><strong>${s.session}</strong><span class="time-range">${s.time} – ${s.endTime}</span><span class="location-label">${s.location}</span><span class="date-label">${dateStr}</span></div>`;
 
-                const wrapper = $(`
-                    <div class="session-block-wrapper">
-                    </div>
-                `);
+        wrapper.appendChild(top1);
+        wrapper.appendChild(bot);
+        block.appendChild(wrapper);
+      } else {
+        block.innerHTML = `<div class="session-info"><strong>${s.session}</strong><span class="time-range">${s.time} – ${s.endTime}</span><span class="location-label">${s.location}</span><span class="date-label">${dateStr}</span></div>`;
+      }
 
-                const overlapSection = $(`
-                    <div class="session-block-part ${getSessionType(cls)}" 
-                         style="position: absolute; 
-                                top: 0; 
-                                left: ${splitLeft}px; 
-                                width: ${splitWidth}px; 
-                                height: ${overlapHeight + rowHeight}px;">
-                    </div>
-                `);
-                
-                // Create the non-overlap section (bottom vertical bar of L - full width)
-                const fullSection = $(`
-                    <div class="session-block-part ${getSessionType(cls)}" 
-                         style="position: absolute; 
-                                top: ${fullWidthTop}px; 
-                                left: 0; 
-                                width: 100%; 
-                                height: ${fullWidthHeight}px;">
-                        <div class="session-info">
-                            <strong>${cls.session}</strong>
-                            <span class="time-range">${cls.time} - ${cls.endTime}</span>
-                            <span class="location-label">${cls.location}</span>
-                            <span class="date-label">${dateStr}</span>
-                        </div>
-                    </div>
-                `);
-
-                block.removeClass(getSessionType(cls));
-                
-                wrapper.append(overlapSection);
-                wrapper.append(fullSection);
-                block.append(wrapper);
-            } else {
-                // No overlap - just add info directly to block
-                block.append(`
-                    <div class="session-info">
-                        <strong>${cls.session}</strong>
-                        <span class="time-range">${cls.time} - ${cls.endTime}</span>
-                        <span class="location-label">${cls.location}</span>
-                        <span class="date-label">${dateStr}</span>
-                    </div>
-                `);
-            }
-            
-            block.data('cls', cls);
-            block.data('dayIndex', dayIndex);
-            block.on("click", () => {
-                // navigate
-                window.location.href = cls.link;
-
-                // open dropdown
-                $(`${cls.link}`).addClass('active');
-            });
-
-
-            
-            eventLayer.append(block);
-        });
-
+      block.addEventListener('click', () => {
+        window.location.href = 'play.html' + s.link;
+        const t = document.querySelector(s.link);
+        if (t) t.classList.add('active');
+      });
+      layer.appendChild(block);
     });
+  });
 }
 
-// =====================
-// Navigation
-// =====================
-$('#prevWeek').click(() => {
-    currentWeekOffset--;
-    renderTimetable();
-    updateNavigationButtons();
+/* ── Navigation ──────────────────────────────────────────── */
+function ttUpdateNav() {
+  const prev = document.getElementById('prevWeek');
+  if (prev) { prev.disabled = ttWeekOffset <= 0; prev.classList.toggle('disabled', ttWeekOffset <= 0); }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const prev = document.getElementById('prevWeek');
+  const next = document.getElementById('nextWeek');
+  if (prev) prev.addEventListener('click', () => { if (ttWeekOffset > 0) { ttWeekOffset--; ttRender(); ttUpdateNav(); } });
+  if (next) next.addEventListener('click', () => { ttWeekOffset++; ttRender(); ttUpdateNav(); });
+
+  window.addEventListener('resize', () => {
+    const layer = document.getElementById('eventLayer');
+    const tbody = document.getElementById('timetableBody');
+    if (!layer || !tbody) return;
+    layer.innerHTML = '';
+    const schedule  = ttGetSchedule(ttGetWeekDates(ttWeekOffset)[0]);
+    const DAYS      = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+    const slots     = ttGenSlots(schedule);
+    const weekDates = ttGetWeekDates(ttWeekOffset);
+    ttRenderEvents(schedule, DAYS, slots, weekDates, layer, tbody);
+  });
+
+  ttRender();
+  ttUpdateNav();
 });
 
-$('#nextWeek').click(() => {
-    currentWeekOffset++;
-    renderTimetable();
-    updateNavigationButtons();
-});
 
-function updateNavigationButtons() {
-    $('#prevWeek').prop('disabled', currentWeekOffset <= 0);
-    if (currentWeekOffset <= 0) {
-        $('#prevWeek').addClass('disabled');
-    } else {
-        $('#prevWeek').removeClass('disabled');
-    }
-}
 
-// =====================
-// Data
-// =====================
-const defaultSchedule = {
-    monday: [
-        { time: '5:30 PM', endTime: '8:00 PM', session: 'Womens & Girls Reps', location: 'Niagara Park Stadium', link: '#womens' },
-        { time: '7:30 PM', endTime: '10:00 PM', session: 'Mens & Boys Reps', location: 'Niagara Park Stadium', link: '#mens' }
-    ],
-    thursday: [
-        { time: '5:30 PM', endTime: '7:00 PM', session: 'Beginner Training', location: 'Niagara Park Stadium', link: '#beginner' },
-        { time: '7:00 PM', endTime: '10:00 PM', session: 'ABC Grade Training', location: 'Niagara Park Stadium', link: '#abc' }
-    ],
-    friday: [
-        { time: '7:00 PM', endTime: '9:00 PM', session: 'Scrim Games', location: 'Niagara Park Stadium', link: '#scrim' }
-    ],
-    sunday: [
-        { time: '5:00 PM', endTime: '9:00 PM', session: 'Social Comp', location: 'Terrigal Stadium', link: '#social' }
-    ]
+/* ── DATA  ── edit sessions here ────────────────────────── */
+const TT_DEFAULT_SCHEDULE = {
+  monday: [
+    { time: '5:30 PM', endTime: '8:00 PM',  session: 'Womens & Girls Reps', location: 'Niagara Park Stadium', link: '#womens' },
+    { time: '7:30 PM', endTime: '10:00 PM', session: 'Mens & Boys Reps',    location: 'Niagara Park Stadium', link: '#mens'   }
+  ],
+  thursday: [
+    { time: '5:30 PM', endTime: '7:00 PM',  session: 'Beginner Training',   location: 'Niagara Park Stadium', link: '#beginner' },
+    { time: '7:00 PM', endTime: '10:00 PM', session: 'ABC Grade Training',  location: 'Niagara Park Stadium', link: '#abc'      }
+  ],
+  friday: [
+    { time: '7:00 PM', endTime: '9:00 PM',  session: 'Scrim Games',         location: 'Niagara Park Stadium', link: '#scrimmage' }
+  ],
+  sunday: [
+    { time: '5:00 PM', endTime: '9:00 PM',  session: 'Social Comp',         location: 'Terrigal Stadium',     link: '#social' }
+  ]
 };
 
-const summerSchedule = {};
-
-const weeklySchedules = {
-    ...repeatScheduleForWeeks('2026-02-02', 1, summerSchedule)
-};
-
-// =====================
-// Window resize handler
-// =====================
-$(window).on('resize', () => {
-    const schedule = getScheduleForWeek(getWeekDates(currentWeekOffset)[0]);
-    const days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-    const slots = generateTimeSlots(schedule);
-    const weekDates = getWeekDates(currentWeekOffset);
-    
-    // Re-render event layer with updated positions
-    $('#eventLayer').empty();
-    renderEventLayer(schedule, days, slots, weekDates);
-});
-
-// =====================
-// Init
-// =====================
-renderTimetable();
-updateNavigationButtons();
+/* Add date-specific week overrides here, e.g.:
+   const TT_WEEKLY_SCHEDULES = { '2026-06-01': { thursday: [...] } }; */
+const TT_WEEKLY_SCHEDULES = {};

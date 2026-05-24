@@ -1,212 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Central Coast Volleyball Club</title>
-	<meta name="description" content="" />
-	<meta name="keywords" content="ccvc, CCVC, Central Coast, Volleyball, Volleyball Club, Central Coast Volleyball Club" />
-	<meta name="author" content="CCVC" />
-	
-	<link rel="apple-touch-icon" sizes="57x57" href="img/CCVC LOGO.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="img/CCVC LOGO.png">
-	<link rel="icon" type="image/png" href="img/CCVC LOGO.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="img/CCVC LOGO.png" sizes="16x16">
-	<link rel="manifest" href="img/CCVC LOGO.png">
-	<link rel="shortcut icon" href="img/CCVC LOGO.png">
-	<meta name="msapplication-TileColor" content="#00a8ff">
-	<meta name="theme-color" content="#ffffff">
-	<!-- Normalize -->
-	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<!-- Owl -->
-	<link rel="stylesheet" type="text/css" href="css/owl.css">
-	<!-- Animate.css -->
-	<link rel="stylesheet" type="text/css" href="css/animate.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.1.0/css/font-awesome.min.css">
-	<!-- Elegant Icons -->
-	<link rel="stylesheet" type="text/css" href="fonts/eleganticons/et-icons.css">
-	<!-- Main style -->
-	<link rel="stylesheet" type="text/css" href="css/CCVC.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play – CCVC</title>
+  <link rel="icon" type="image/png" href="img/CCVC LOGO.png">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/play.css">
 </head>
+<body class="inner-page">
 
-<body class="other"> 
-	<!-- Preloader -->
-	<div class="preloader">
-		<img src="img/loader.gif" alt="Preloader image">
-	</div>
+<div id="preloader"><div><div class="preloader-ring"></div><div class="preloader-label">CCVC</div></div></div>
+<div id="navbar-placeholder"></div>
 
-	<!-- Navbar -->
-	<div id="navbar-placeholder"></div>
+<!-- PAGE BANNER -->
+<div class="page-banner">
+  <h1>Ways to <span>Play</span></h1>
+  <p>All sessions, all levels – find your place at CCVC.</p>
+</div>
 
-    <section id="timetable" style="margin-top: 110px; width:100vw">
+<!-- ═══ WEEKLY TIMETABLE ═══ -->
+<section id="timetable" style="margin-top: 110px; width:100vw">
 		
-        <div class="container" style="width: 70%";>
+  <div class="container";>
 
-			<div id="warning">
-				<div class="warning">
-					<h1 style="color: white;"> 
-						You must be registered with our club to step onto the court.
-					</h1>
-					<a href="register.html" class="registration-button">
-						Registration
-					</a>
-					<h5 style="color: white;"> 
-						Otherwise: click anywhere to view timetable.
-					</h5>
-				</div>
-				
-			</div>
-            
-            <div class="timetable-header">
-                <button class="week-nav prev-week" id="prevWeek"></button>
-                <h3 class="week-display" id="weekDisplay"></h3>
-                <button class="week-nav next-week" id="nextWeek"></button>
-            </div>
-            
-            <div id="timetable-wrapper" class="timetable-wrapper">
-                <table class="timetable-grid">
-                    <thead>
-                        <tr>
-                            <th class="time-column">Time</th>
-                            <th>Mon</th>
-                            <th>Tue</th>
-                            <th>Wed</th>
-                            <th>Thu</th>
-                            <th>Fri</th>
-                            <th>Sat</th>
-                            <th>Sun</th>
-                        </tr>
-                    </thead>
-                    <tbody id="timetableBody">
-                        <!-- Timetable will be populated by JavaScript -->
-                    </tbody>
-                </table>
-                <div id="eventLayer"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="womens" class="play-section" >
-		<div id="womens-dropdown" class="play-dropdown session-color-1" >
-			<p id="womens-button" class="play-button">
-				&#9660
-			</p>
-			<h2 style="color: gold; line-height: 2;">
-				Womens & Girls Representatives
-			</h2>
-		</div>
-		<div id="womens-info" class="play-info">
-			<h3> heres the info</h3>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		</div>
-    </section>
-
-    <section id="mens" class="play-section" >
-		<div id="mens-dropdown" class="play-dropdown session-color-2" >
-			<p id="mens-button" class="play-button alt">
-				&#9660
-			</p>
-			<h2 style="color: #2c82c9; line-height: 2;">
-				Mens & Boys Representatives
-			</h2>
-		</div>
-		<div id="mens-info" class="play-info">
-			<h3> heres the info</h3>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		</div>
-    </section>
-
-	<section id="beginner" class="play-section" >
-		<div id="beginner-dropdown" class="play-dropdown session-color-1" >
-			<p id="beginners-button" class="play-button">
-				&#9660
-			</p>
-			<h2 style="color: gold; line-height: 2;">
-				Beginners Training
-			</h2>
-		</div>
-		<div id="beginners-info" class="play-info">
-			<h3> heres the info</h3>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		</div>
-    </section>
-
-	<section id="abc" class="play-section" >
-		<div id="abc-dropdown" class="play-dropdown session-color-2" >
-			<p id="abc-button" class="play-button alt">
-				&#9660
-			</p>
-			<h2 style="color: #2c82c9; line-height: 2;">
-				ABC Grade Training
-			</h2>
-		</div>
-		<div id="abc-info" class="play-info">
-			<h3> 
-			Join us on Thursday nights at Niagara Park Stadium for social mixed training every week. From first-time players to experienced ones, we can find court space for you and your level of play.
-			Skills training and games, there is something for you at CCVC!
-			</h3>
-
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		</div>
-    </section>
-
-	<section id="scrimmage" class="play-section" >
-		<div id="scrimmage" class="play-dropdown session-color-1" >
-			<p id="scrimmage-button" class="play-button">
-				&#9660
-			</p>
-			<h2 style="color: gold; line-height: 2;">
-				Scrimmage Training
-			</h2>
-			
-		</div>
-		<div id="scrimmage-info" class="play-info">
-			<h3> heres the info</h3>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		</div>
-    </section>
-
-	<section id="social" class="play-section" >
-		<div id="social-dropdown" class="play-dropdown session-color-2" >
-			<p id="social-button" class="play-button alt">
-				&#9660
-			</p>
-			<h2 style="color: #2c82c9; line-height: 2;">
-				Social Competition
-			</h2>
-		</div>
-		<div id="social-info" class="play-info">
-			<h3> heres the info</h3>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.313774981068!2d151.41967359308566!3d-33.44113080478988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72c9f9db226a9d%3A0xeedb8ff9be7652d1!2sGuzman%20y%20Gomez%20Stadium!5e0!3m2!1sen!2sau!4v1771737244947!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		</div>
-    </section>
-
-	<section style="height: 600px;">
-
-	</section>
-
-	<div id="footer-placeholder"></div>
-
+    <div id="reg-warning" class="reg-warning">
+      <h1 style="color: white;"> 
+        You must be registered with our club to step onto the court.
+      </h1>
+      <a href="register.html" class="registration-button">
+        Registration
+      </a>
+      <h5 style="color: white;"> 
+        Otherwise: click anywhere to view timetable.
+      </h5>
+      
+    </div>
+          
+    <div class="timetable-header">
+        <button class="week-nav" id="prevWeek"> < </button>
+        <h3 class="week-display" id="weekDisplay"></h3>
+        <button class="week-nav" id="nextWeek"> > </button>
+    </div>
     
+    <div id="timetable-wrapper" class="timetable-wrapper">
+        <table class="timetable-grid">
+            <thead>
+                <tr>
+                    <th class="time-column">Time</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody id="timetableBody">
+                <!-- Timetable will be populated by JavaScript -->
+            </tbody>
+          </table>
+        <div id="eventLayer"></div>
+    </div>
+  </div>
+</section>
 
+<!-- ═══ SESSION DETAILS ═══ -->
 
-    <script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/typewriter.js"></script>
-	<script src="js/jquery.onepagenav.js"></script>
-	<script src="js/play.js"></script>
-    <script src="js/timetable.js"></script>
-	<script src="https://apis.google.com/js/platform.js"></script>
-	<script src="https://iframely.net/embed.js"></script>
+<section id="womens" class="play-section">
+  <div class="play-dropdown band-gold">
+    <span class="play-arrow">&#9660;</span>
+    <h2>Women's &amp; Girls Representatives</h2>
+  </div>
+  <div class="play-info">
+    <h3>Representative volleyball for women and girls competing at state level. Contact us for current season details.</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Niagara Park Stadium"></iframe>
+  </div>
+</section>
+
+<section id="mens" class="play-section">
+  <div class="play-dropdown band-blue">
+    <span class="play-arrow">&#9660;</span>
+    <h2>Men's &amp; Boys Representatives</h2>
+  </div>
+  <div class="play-info">
+    <h3>Sydney Volleyball League – Men's Division 2. Saturdays at Sydney Olympic Park during Season 2026.</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Niagara Park Stadium"></iframe>
+  </div>
+</section>
+
+<section id="beginner" class="play-section">
+  <div class="play-dropdown band-gold">
+    <span class="play-arrow">&#9660;</span>
+    <h2>Beginners Training</h2>
+  </div>
+  <div class="play-info">
+    <h3>Never played volleyball? Come along on a Thursday evening. Our coaches will guide you through the basics in a welcoming, low-pressure environment.</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Niagara Park Stadium"></iframe>
+  </div>
+</section>
+
+<section id="abc" class="play-section">
+  <div class="play-dropdown band-blue">
+    <span class="play-arrow">&#9660;</span>
+    <h2>ABC Grade Training</h2>
+  </div>
+  <div class="play-info">
+    <h3>Join us Thursday nights at Niagara Park Stadium for social mixed training. From first-time players to experienced ones – skills training and games for all levels.</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Niagara Park Stadium"></iframe>
+  </div>
+</section>
+
+<section id="scrimmage" class="play-section">
+  <div class="play-dropdown band-gold">
+    <span class="play-arrow">&#9660;</span>
+    <h2>Scrimmage Training</h2>
+  </div>
+  <div class="play-info">
+    <h3>High-intensity scrimmage sessions for players looking to sharpen their competitive skills. Friday evenings at Niagara Park.</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.551025689162!2d151.35005567707748!3d-33.3827856734164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72cb1859ee7e87%3A0x4a1f491559253c56!2sNiagara%20Park%20Stadium!5e0!3m2!1sen!2sau!4v1771737020252!5m2!1sen!2sau" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Niagara Park Stadium"></iframe>
+  </div>
+</section>
+
+<section id="social" class="play-section">
+  <div class="play-dropdown band-blue">
+    <span class="play-arrow">&#9660;</span>
+    <h2>Social Competition</h2>
+  </div>
+  <div class="play-info">
+    <h3>Sunday social competition at Terrigal / Guzman y Gomez Stadium. Fun, friendly games for all skill levels. Check the home page timetable for weekly matchups.</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.313774981068!2d151.41967359308566!3d-33.44113080478988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b72c9f9db226a9d%3A0xeedb8ff9be7652d1!2sGuzman%20y%20Gomez%20Stadium!5e0!3m2!1sen!2sau!4v1771737244947!5m2!1sen!2sau" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Guzman y Gomez Stadium"></iframe>
+  </div>
+</section>
+
+<div class="play-end-spacer"></div>
+<div id="footer-placeholder"></div>
+
+<script src="js/global.js"></script>
+<script src="js/timetable.js"></script>
+<script src="js/play.js"></script>
 </body>
-<html>
-
-
+</html>

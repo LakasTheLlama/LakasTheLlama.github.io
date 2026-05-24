@@ -1,35 +1,22 @@
-// FAQ Accordion functionality
-document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-        const faqItem = button.parentElement;
-        const wasActive = faqItem.classList.contains('active');
-        
-        // Close all items
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        
-        // Open clicked item if it wasn't active
-        if (!wasActive) {
-            faqItem.classList.add('active');
-        }
+/* =============================================================
+   FAQ PAGE  –  js/faq.js
+   Accordion open/close + keyboard support.
+   ============================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const wasActive = item.classList.contains('active');
+      items.forEach(i => i.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
     });
+    btn.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); btn.click(); } });
+  });
+
+  if (window.location.hash) {
+    const t = document.querySelector(window.location.hash);
+    if (t && t.classList.contains('faq-item')) { t.classList.add('active'); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  }
 });
-
-// Keyboard accessibility
-document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            button.click();
-        }
-    });
-});
-
-$(function() {
-    $("#footer-placeholder").load("footer.html");
-}); 
-
-$(function() {
-    $("#navbar-placeholder").load("navbar.html");
-}); 

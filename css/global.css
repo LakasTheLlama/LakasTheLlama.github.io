@@ -1,0 +1,456 @@
+/* =============================================================
+   CCVC GLOBAL STYLESHEET
+   Shared across all pages.
+   Page-specific styles live in css/<pagename>.css
+   ============================================================= */
+
+/* ── Google Fonts loaded via HTML <link> in each page head ── */
+
+/* ─────────────────────────────────────────
+   1. BRAND TOKENS
+───────────────────────────────────────── */
+:root {
+  --navy:       #0a1628;
+  --navy-mid:   #0d2052;
+  --blue:       #1a56d6;
+  --blue2:      #2c82c9;
+  --gold:       #f5c800;
+  --gold-dark:  #e6a800;
+  --white:      #ffffff;
+  --offwhite:   #f4f6fb;
+  --gray-light: #e5e9f0;
+  --gray:       #8a9ab5;
+  --text:       #1a2540;
+  --text-muted: #556;
+  --radius:     12px;
+  --radius-sm:  6px;
+  --shadow:     0 4px 24px rgba(10,22,40,.13);
+  --shadow-lg:  0 12px 40px rgba(10,22,40,.22);
+  --transition: .25s ease;
+}
+
+/* ─────────────────────────────────────────
+   2. RESET / BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; font-size: 16px; }
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; transition: color var(--transition); }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+section { scroll-margin-top: 80px; }
+
+/* ─────────────────────────────────────────
+   3. TYPOGRAPHY
+───────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text);
+}
+h1 { font-size: clamp(38px, 6vw, 72px); }
+h2 { font-size: clamp(28px, 4vw, 48px); }
+h3 { font-size: clamp(22px, 3vw, 32px); }
+h4 { font-size: clamp(18px, 2.5vw, 24px); }
+h5 { font-size: 18px; }
+h6 { font-size: 15px; }
+p  { font-size: 16px; line-height: 1.7; color: var(--text-muted); }
+
+/* ─────────────────────────────────────────
+   4. CONTAINER
+───────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────────────────────────────────────────
+   5. SECTION HEADER
+───────────────────────────────────────── */
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header .tag {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  background: var(--gold); color: var(--navy);
+  padding: 4px 14px; border-radius: 4px; margin-bottom: 14px;
+}
+.section-header h2 { text-transform: uppercase; }
+.section-header p  { max-width: 560px; margin: 12px auto 0; font-size: 17px; }
+.section-header.light h2 { color: var(--white); }
+.section-header.light p  { color: rgba(255,255,255,.65); }
+
+/* ─────────────────────────────────────────
+   6. BUTTONS
+───────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 17px;
+  padding: 13px 32px; border-radius: var(--radius-sm); border: 2px solid var(--gold);
+  cursor: pointer; transition: var(--transition);
+}
+.btn-primary:hover { background: transparent; color: var(--gold); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 17px;
+  padding: 13px 32px; border-radius: var(--radius-sm); border: 2px solid rgba(255,255,255,.4);
+  cursor: pointer; transition: var(--transition);
+}
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.08); color: var(--white); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px;
+  padding: 10px 26px; border-radius: var(--radius-sm); border: 2px solid var(--gold);
+  cursor: pointer; transition: var(--transition);
+}
+.btn-ghost:hover { background: var(--gold); color: var(--navy); }
+
+/* ─────────────────────────────────────────
+   7. PRELOADER
+───────────────────────────────────────── */
+#preloader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .5s ease;
+}
+.preloader-ring {
+  width: 64px; height: 64px;
+  border: 4px solid rgba(245,200,0,.2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+.preloader-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 16px; letter-spacing: 4px;
+  color: var(--gold); margin-top: 14px; text-align: center;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─────────────────────────────────────────
+   8. NAVBAR
+───────────────────────────────────────── */
+#navbar {
+  position: fixed; top: 45px; left: 0; right: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 72px;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+#navbar.scrolled {
+  background: var(--navy);
+  box-shadow: 0 2px 20px rgba(0,0,0,.35);
+  transition: transform 0.5s ease;
+  transform: translateY(-45px);
+}
+/* On inner pages navbar is always solid */
+body.inner-page #navbar {
+  background: var(--navy);
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+}
+#navbar .brand img { height: 56px; transition: height var(--transition); }
+#navbar.scrolled .brand img { height: 50px; }
+
+#navbar ul {
+  display: flex; align-items: center; gap: 4px;
+  padding: 0; margin: 0;
+}
+#navbar ul li a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: 15px; letter-spacing: .4px;
+  color: var(--white); padding: 7px 14px; border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+}
+#navbar ul li a:hover { background: rgba(245,200,0,.15); color: var(--gold); }
+#navbar ul li.active > a { color: var(--gold); }
+#navbar ul li a.btn-nav-faq {
+  background: var(--gold); color: var(--navy); font-weight: 700; padding: 7px 18px;
+}
+#navbar ul li a.btn-nav-faq:hover { background: var(--gold-dark); color: var(--navy); }
+
+/* Hamburger */
+#hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: transparent; border: none; cursor: pointer; padding: 4px; z-index: 10;
+}
+#hamburger span {
+  width: 25px; height: 3px;
+  background: var(--white); border-radius: 2px; transition: .3s;
+}
+#hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(6px,6px); }
+#hamburger.open span:nth-child(2) { opacity: 0; }
+#hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+
+@media (max-width: 860px) {
+  #hamburger { display: flex; }
+  #navbar ul {
+    display: none; flex-direction: column; align-items: stretch;
+    position: absolute; top: 72px; left: 0; right: 0;
+    background: var(--navy); padding: 12px 0; gap: 0;
+  }
+  #navbar ul.open { display: flex; }
+  #navbar ul li a { display: block; padding: 12px 24px; border-radius: 0; }
+}
+
+/* ─────────────────────────────────────────
+   9. PAGE BANNER (inner pages hero)
+───────────────────────────────────────── */
+.page-banner {
+  padding: 130px 5% 70px;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.page-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg, var(--gold) 0, var(--gold) 1px, transparent 1px, transparent 36px
+  );
+  opacity: .05;
+}
+.page-banner h1 { color: var(--white); text-transform: uppercase; position: relative; z-index: 1; }
+.page-banner h1 span { color: var(--gold); }
+.page-banner p  { color: rgba(255,255,255,.65); max-width: 560px; margin: 14px auto 0; font-size: 18px; position: relative; z-index: 1; }
+
+/* ─────────────────────────────────────────
+   10. NOTICE TICKER
+───────────────────────────────────────── */
+#notices {
+  background: var(--gold);
+  overflow: hidden; position: relative; z-index: 50;
+}
+.notice-ticker { display: flex; align-items: center; height: 48px; }
+.notice-label {
+  background: var(--navy); color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 0 20px; height: 100%; display: flex; align-items: center; gap: 8px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.notice-track-wrap { flex: 1; overflow: hidden; }
+.notice-track {
+  display: flex; gap: 56px; white-space: nowrap;
+  animation: ticker 35s linear infinite;
+}
+.notice-track:hover { animation-play-state: paused; }
+.notice-item {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px;
+  color: var(--navy); display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────
+   11. FOOTER
+───────────────────────────────────────── */
+#site-footer {
+  background: #060e1e;
+  padding: 64px 5% 28px;
+  color: rgba(255,255,255,.55);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 40px; margin-bottom: 48px;
+}
+.footer-brand img  { height: 60px; margin-bottom: 16px; }
+.footer-brand p    { font-size: 14px; line-height: 1.7; }
+.footer-socials    { display: flex; gap: 14px; margin-top: 18px; }
+.footer-socials a  { font-size: 18px; color: rgba(255,255,255,.45); transition: color var(--transition); }
+.footer-socials a:hover { color: var(--gold); }
+.footer-col h4 {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px;
+  color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+.footer-col ul li a { font-size: 14px; color: rgba(255,255,255,.5); transition: color var(--transition); }
+.footer-col ul li a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 22px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  font-size: 13px;
+}
+.footer-bottom a { color: var(--gold); }
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 500px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ─────────────────────────────────────────
+   12. TIMETABLE (shared between index + play)
+───────────────────────────────────────── */
+.tt-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; margin-bottom: 28px;
+}
+.tt-week-btn {
+  background: var(--blue); color: #fff; border: none;
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 22px; cursor: pointer; transition: background var(--transition);
+  display: flex; align-items: center; justify-content: center;
+}
+.tt-week-btn:hover    { background: var(--navy); }
+.tt-week-btn:disabled { background: #ccc; cursor: not-allowed; opacity: .6; }
+#weekLabel, #weekDisplay {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px;
+  color: var(--navy); min-width: 250px; text-align: center;
+}
+/* dark bg variant */
+.on-dark #weekLabel, .on-dark #weekDisplay { color: var(--white); }
+
+.tt-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+.tt-table { width: 100%; border-collapse: collapse; background: #fff; table-layout: fixed; }
+.tt-table thead tr { background: linear-gradient(135deg, var(--navy), var(--blue2)); }
+.tt-table th {
+  padding: 14px 10px; color: #fff; text-align: center;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px;
+  border: 1px solid rgba(255,255,255,.15);
+}
+.tt-table td {
+  padding: 12px 8px; text-align: center;
+  border: 1px solid var(--gray-light); vertical-align: middle;
+  font-size: 13px;
+}
+.tt-table td.time-cell {
+  background: #f0f4fb; font-weight: 700; color: var(--blue); white-space: nowrap;
+}
+.tt-session {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--navy); border-radius: 8px; padding: 6px 8px; font-weight: 600; font-size: 12px;
+}
+.tt-session.blue { background: linear-gradient(135deg, var(--blue), var(--blue2)); color: #fff; }
+
+/* ─────────────────────────────────────────
+   13. DRAW / RESULTS CARDS (shared)
+───────────────────────────────────────── */
+.draw-card {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius); padding: 20px 24px;
+  display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 16px;
+}
+.draw-card.result-win      { border-left: 4px solid #22c55e; }
+.draw-card.result-loss     { border-left: 4px solid #ef4444; }
+.draw-card.result-upcoming { border-left: 4px solid var(--gold); }
+.draw-card.result-duty     { border-left: 4px solid var(--gray); }
+.draw-round { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 1px; }
+.draw-date  { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 16px; color: var(--gold); }
+.draw-opponent { font-weight: 600; font-size: 16px; color: var(--white); }
+.draw-venue    { font-size: 13px; color: rgba(255,255,255,.4); margin-top: 3px; }
+.draw-score    { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 30px; color: var(--white); text-align: right; }
+.badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px;
+  letter-spacing: 1px; padding: 3px 10px; border-radius: 4px; text-transform: uppercase;
+}
+.badge-win      { background: #22c55e; color: #fff; }
+.badge-loss     { background: #ef4444; color: #fff; }
+.badge-upcoming { background: var(--gold); color: var(--navy); }
+.badge-duty     { background: rgba(255,255,255,.15); color: rgba(255,255,255,.65); }
+
+@media (max-width: 580px) { .draw-card { grid-template-columns: 1fr; } }
+
+/* ─────────────────────────────────────────
+   14. MODAL / POPUP
+───────────────────────────────────────── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 8000;
+  background: rgba(0,0,0,.65); align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: url('../img/popup.jpg') center/cover var(--navy-mid);
+  border-radius: var(--radius); padding: 40px 36px;
+  width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto;
+  position: relative; text-align: center;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 20px;
+  background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;
+}
+.modal-box h3 { color: #fff; margin-bottom: 8px; }
+.modal-box h5 { color: rgba(255,255,255,.7); font-weight: 400; margin-bottom: 24px; font-size: 14px; line-height: 1.6; }
+.modal-form { display: flex; flex-direction: column; gap: 14px; }
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+  width: 100%; padding: 14px 18px;
+  background: transparent; border: 2px solid rgba(255,255,255,.4);
+  border-radius: var(--radius-sm); color: #fff; font-size: 15px;
+  transition: border-color var(--transition);
+}
+.modal-form input::placeholder,
+.modal-form textarea::placeholder { color: rgba(255,255,255,.5); }
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus { outline: none; border-color: var(--gold); }
+.modal-form select { color: rgba(255,255,255,.7); }
+.modal-form select option { background: var(--navy); color: #fff; }
+.modal-submit {
+  width: 100%; padding: 14px;
+  background: #fff; color: var(--blue); border: none;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px;
+  border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition);
+}
+.modal-submit:hover { background: var(--gold); color: var(--navy); }
+
+/* ─────────────────────────────────────────
+   15. FORM CONTROLS (contact page)
+───────────────────────────────────────── */
+.form-field {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.form-field label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px;
+  letter-spacing: .5px; text-transform: uppercase; color: var(--text);
+}
+.form-input {
+  padding: 14px 18px; border: 2px solid var(--gray-light);
+  border-radius: var(--radius-sm); font-size: 15px; color: var(--text);
+  background: #fafbfd; transition: border-color var(--transition);
+  font-family: 'Barlow', sans-serif;
+}
+.form-input:focus { outline: none; border-color: var(--blue); background: #fff; }
+.form-input.textarea { resize: vertical; min-height: 130px; }
+
+/* ─────────────────────────────────────────
+   16. UTILITY CLASSES
+───────────────────────────────────────── */
+.text-center  { text-align: center; }
+.text-gold    { color: var(--gold); }
+.text-white   { color: var(--white); }
+.text-navy    { color: var(--navy); }
+.text-muted   { color: var(--text-muted); }
+.bg-navy      { background: var(--navy); }
+.bg-offwhite  { background: var(--offwhite); }
+.bg-white     { background: var(--white); }
+.uppercase    { text-transform: uppercase; }
+.mt-80        { margin-top: 80px; }
+.py-section   { padding: 88px 0; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-gap     { display: flex; gap: 14px; flex-wrap: wrap; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+

@@ -1,0 +1,47 @@
+<!-- =============================================================
+     CCVC NAVBAR COMPONENT
+     Loaded into every page via: fetch('components/navbar.html')
+     Active link is set by js/navbar.js based on current page filename.
+     ============================================================= -->
+<nav id="navbar">
+  <a class="brand" href="index.html">
+    <img src="img/CCVC LOGO.png" alt="CCVC Logo">
+  </a>
+  <div class="nav-ticker">
+  <div class="nav-ticker-track">
+    <span class="notice-item"><i class="fa fa-volleyball-ball"></i> Season 2026 underway – Men's Div 2 playing Saturdays at Sydney Olympic Park</span>
+    <span class="notice-item"><i class="fa fa-star"></i> Registration open for all sessions – join us today!</span>
+    <span class="notice-item"><i class="fa fa-shirt"></i> Club merch orders open – hoodie + bottle available</span>
+    <span class="notice-item"><i class="fa fa-calendar"></i> Next game: Round 3 – Sat 30 May vs Sydney South West VC, 14:00</span>
+
+    <!-- duplicate for seamless loop -->
+    <span class="notice-item"><i class="fa fa-volleyball-ball"></i> Season 2026 underway – Men's Div 2 playing Saturdays at Sydney Olympic Park</span>
+    <span class="notice-item"><i class="fa fa-star"></i> Registration open for all sessions – join us today!</span>
+    <span class="notice-item"><i class="fa fa-shirt"></i> Club merch orders open – hoodie + bottle available</span>
+    <span class="notice-item"><i class="fa fa-calendar"></i> Next game: Round 3 – Sat 30 May vs Sydney South West VC, 14:00</span>
+  </div>
+</div>
+ 
+  <button id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+ 
+  <ul id="nav-links" role="list">
+    <li data-page="play.html">
+      <a href="play.html">Play</a>
+    </li>
+    <li data-page="contact.html">
+      <a href="contact.html">Contact Us</a>
+    </li>
+    <li data-page="register.html">
+      <a href="register.html">Register</a>
+    </li>
+    <li data-page="merch.html">
+      <a href="merch.html">Merch</a>
+    </li>
+    <li data-page="faq.html">
+      <a href="faq.html" class="btn-nav-faq">FAQ</a>
+    </li>
+  </ul>
+</nav>
+ 

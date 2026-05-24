@@ -1,360 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Central Coast Volleyball Club</title>
-	<meta name="description" content="" />
-	<meta name="keywords" content="ccvc, CCVC, Central Coast, Volleyball, Volleyball Club, Central Coast Volleyball Club" />
-	<meta name="author" content="CCVC" />
-	
-	<link rel="apple-touch-icon" sizes="57x57" href="img/CCVC LOGO.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="img/CCVC LOGO.png">
-	<link rel="icon" type="image/png" href="img/CCVC LOGO.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="img/CCVC LOGO.png" sizes="16x16">
-	<meta name="msapplication-TileColor" content="#00a8ff">
-	<meta name="theme-color" content="#ffffff">
-	<!-- Normalize -->
-	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<!-- Owl -->
-	<link rel="stylesheet" type="text/css" href="css/owl.css">
-	<!-- Animate.css -->
-	<link rel="stylesheet" type="text/css" href="css/animate.css">
-	<!-- Main style -->
-	<link rel="stylesheet" type="text/css" href="css/CCVC.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central Coast Volleyball Club</title>
+  <meta name="description" content="Central Coast Volleyball Club – More than just a club.">
+  <link rel="icon" type="image/png" href="img/CCVC LOGO.png">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
-	<!-- Preloader -->
-	<div class="preloader">
-		<img src="img/loader.gif" alt="Preloader image">
-	</div>
 
-	<!-- Navbar -->
-	<div id="navbar-placeholder"></div>
+<div id="preloader">
+  <div><div class="preloader-ring"></div><div class="preloader-label">CCVC</div></div>
+</div>
 
-	<header id="start" class="main">
-		<div class="container">
-			<div class="table">
-				<div class="header-text">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<h3 class="light white">I LOVE BALLS.</h3>
-							<h1 class="white heading">Central Coast Volleyball Club</h1>
-							<span class="typed-cursor">Join Today</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+<div id="navbar-placeholder"></div>
 
-
-	<section id="socials" class="social-section">
-		<div class="container">
-
-			<div class="social-grid">
-
-				<!-- YouTube -->
-				<a href="https://www.youtube.com/@YOURCHANNEL"
-				target="_blank"
-				class="social-card youtube">
-
-					<div class="social-top">
-						<span class="platform">YouTube</span>
-					</div>
-					<img src="img/yt-icon.png" alt="YouTube" style="width: 60%; ">
-					<h3>Match Highlights & Training</h3>
-				</a>
-
-				<!-- Instagram -->
-				<a href="https://instagram.com/YOURPAGE"
-				target="_blank"
-				class="social-card instagram">
-
-					<div class="social-top">
-						
-						<span class="platform">Instagram</span>
-					</div>
-					<img src="img/ig-icon.png" alt="Instagram" style="width: 60%; margin: 12px">
-					<h3>Daily Club Updates</h3>
-
-				</a>
-
-				<!-- Facebook -->
-				<a href="https://facebook.com/YOURPAGE"
-				target="_blank"
-				class="social-card facebook">
-
-					<div class="social-top">
-						
-						<span class="platform">Facebook</span>
-					</div>
-					<img src="img/fb-icon.png" alt="Facebook" style="width: 60%; margin: 12px">
-					<h3>Indoor Volleyball Community</h3>
-				</a>
-
-				<!-- Facebook 2 -->
-				<a href="https://facebook.com/YOURPAGE"
-				target="_blank"
-				class="social-card facebook2">
-
-					<div class="social-top">
-						
-						<span class="platform">Facebook</span>
-					</div>
-					<img src="img/fb-icon.png" alt="Facebook" style="width: 60%;">
-					<h3>Beach Volleyball Community</h3>
-				</a>
-
-				<!-- Whatsapp -->
-				<a href=""
-				target="_blank"
-				class="social-card whatsapp">
-
-					<div class="social-top">
-						
-						<span class="platform">Whatsapp</span>
-					</div>
-					<img src="img/fb-icon.png" alt="Whatsapp" style="width: 60%;">
-					<h3>Main Messaging Platform</h3>
-				</a>
-
-			</div>
-		</div>
-	</section>
-
-
-	<div style="margin: 15px;">
-		<h1 style="margin:auto; width:fit-content";> Social Comp Games</h1>
-	</div>
-	
-	<div class="timetable-header">
-        <button class="week-nav prev-week" id="prevWeek"></button>
-            <h3 id="dateTitle"></h1>
-        <button class="week-nav next-week" id="nextWeek"></button>
+<!-- NOTICE TICKER -->
+<div id="notices">
+  <div class="notice-ticker">
+    <div class="notice-label"><i class="fa fa-bullhorn"></i> Club News</div>
+    <div class="notice-track-wrap">
+      <div class="notice-track">
+        <span class="notice-item"><i class="fa fa-volleyball-ball"></i> Season 2026 underway – Men's Div 2 playing Saturdays at Sydney Olympic Park</span>
+        <span class="notice-item"><i class="fa fa-star"></i> Registration open for all sessions – join us today!</span>
+        <span class="notice-item"><i class="fa fa-shirt"></i> Club merch orders open – hoodie + bottle available</span>
+        <span class="notice-item"><i class="fa fa-calendar"></i> Next game: Round 3 – Sat 30 May vs Sydney South West VC · 14:00</span>
+        <span class="notice-item"><i class="fa fa-trophy"></i> Beginners training every Thursday at Niagara Park Stadium</span>
+        <span class="notice-item"><i class="fa fa-volleyball-ball"></i> Season 2026 underway – Men's Div 2 playing Saturdays at Sydney Olympic Park</span>
+        <span class="notice-item"><i class="fa fa-star"></i> Registration open for all sessions – join us today!</span>
+        <span class="notice-item"><i class="fa fa-shirt"></i> Club merch orders open – hoodie + bottle available</span>
+        <span class="notice-item"><i class="fa fa-calendar"></i> Next game: Round 3 – Sat 30 May vs Sydney South West VC · 14:00</span>
+        <span class="notice-item"><i class="fa fa-trophy"></i> Beginners training every Thursday at Niagara Park Stadium</span>
+      </div>
     </div>
-	<div class="timetable-wrapper" style="width: 60%; margin:auto;"> 
-		<table id="schedule" class="timetable-grid" >
-			<colgroup>
-				<col style="width: 120px">
-				<col>
-				<col>
-				<col>
-			</colgroup>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Court 1</th>
-					<th>Court 2</th>
-					<th>Court 3</th>
-				</tr>
-			</thead>
-			<tbody></tbody>
-		</table>
+  </div>
+</div>
 
-	</div>
-	
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-stripes"></div>
+  <div class="hero-ball"></div>
+  <p class="eyebrow">Central Coast, NSW</p>
+  <h1>Central Coast<br><span>Volleyball</span><br>Club</h1>
+  <p class="hero-sub">More than just a club. From beginners to representatives – there's a place for you at CCVC.</p>
+  <div class="hero-btns">
+    <a href="register.html" class="btn-primary">Register Now</a>
+    <a href="play.html" class="btn-outline">View Sessions</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">15+</div><div class="lbl">Sessions / Week</div></div>
+    <div class="hero-stat"><div class="num">200+</div><div class="lbl">Members</div></div>
+    <div class="hero-stat"><div class="num">All</div><div class="lbl">Skill Levels</div></div>
+  </div>
+</header>
 
-	<section id="intro">
-		<div style="margin: 100px;">
-		 <h2 style="justify-content: center;">Who we are</h2>
-		 <h5>Central Coast Volleyball Club Inc (CCVC) is located between Sydney and Newcastle in NSW.
-We are a Volleyball NSW-affiliated & not-for-profit club and cater to all levels of ability, from new starters through to experienced and the more competitive players.
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Who <span>We Are</span></h2>
+      <p>Central Coast Volleyball Club Inc (CCVC) is located between Sydney and Newcastle in NSW. We are a Volleyball NSW-affiliated, not-for-profit club catering to all levels of ability.</p>
+      <p>Whether you're looking to play at a competitive level or simply want a fun way to keep fit and make new friends, come see us. CCVC provides opportunities for everyone to enjoy sport, learn new skills, and compete fairly.</p>
+      <a href="play.html" class="btn-primary" style="margin-top:12px">Explore Sessions <i class="fa fa-arrow-right"></i></a>
+    </div>
+    <div class="about-img-wrap">
+      <div class="accent-box"></div>
+      <div class="about-placeholder"><i class="fa fa-volleyball-ball"></i></div>
+    </div>
+  </div>
+</section>
 
-​If you are looking to play at a competitive level, or simply want a more social and fun way to keep fit, please come and see us.
+<!-- LIVE DRAWS -->
+<section id="draws">
+  <div class="container">
+    <div data-draws-widget
+         data-url="https://www.volleyballnsw.com.au/games/team/26016/411673"
+         data-title="SVL – Men's Division 2 · 2026">
+    </div>
+  </div>
+</section>
 
-CCVC aims to provide opportunities for all people to enjoy sport, make new friends, learn new skills, acquire habits of self-discipline, learn to cooperate and to compete fairly. </h5>
-		</div>
-	</section>
+<!-- SOCIAL COMP TIMETABLE -->
+<section id="social-timetable">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Schedule</span>
+      <h2>Social Comp Games</h2>
+    </div>
+    <div class="tt-controls">
+      <button class="tt-week-btn" id="prevWeek" aria-label="Previous week">&#8249;</button>
+      <div id="dateTitle">Loading…</div>
+      <button class="tt-week-btn" id="nextWeek" aria-label="Next week">&#8250;</button>
+    </div>
+    <div class="st-wrap">
+      <div class="tt-wrap">
+        <table id="schedule" class="tt-table">
+          <colgroup><col style="width:110px"><col><col><col></colgroup>
+          <thead>
+            <tr><th></th><th>Court 1</th><th>Court 2</th><th>Court 3</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 
-	<section id="notices">
-		<div style="margin: 100px;">
-		 <h2 style="justify-content: center;">Notice Board</h2>
-		 <h5> </h5>
-		</div>
-	</section>
+<!-- SESSIONS -->
+<section id="sessions">
+  <div class="container">
+    <div class="section-header light">
+      <span class="tag">Get Involved</span>
+      <h2>Ways to Play</h2>
+    </div>
+    <div class="sessions-grid">
+      <div class="session-card">
+        <div class="sc-head"><div class="sc-dot gold"></div><h3>Women's &amp; Girls Reps</h3></div>
+        <div class="sc-body"><p>Representative volleyball for women and girls. Compete at state level.</p>
+          <div class="sc-meta"><span><i class="fa fa-map-marker-alt"></i> Niagara Park Stadium</span><span><i class="fa fa-calendar"></i> Mondays</span></div></div>
+      </div>
+      <div class="session-card">
+        <div class="sc-head"><div class="sc-dot blue"></div><h3>Men's &amp; Boys Reps</h3></div>
+        <div class="sc-body"><p>Representative volleyball competing in the Sydney Volleyball League and state comps.</p>
+          <div class="sc-meta"><span><i class="fa fa-map-marker-alt"></i> Sydney Olympic Park</span><span><i class="fa fa-calendar"></i> Saturdays – Season 2026</span></div></div>
+      </div>
+      <div class="session-card">
+        <div class="sc-head"><div class="sc-dot gold"></div><h3>Beginners Training</h3></div>
+        <div class="sc-body"><p>Never played? Our coaches teach fundamentals in a friendly environment.</p>
+          <div class="sc-meta"><span><i class="fa fa-map-marker-alt"></i> Niagara Park Stadium</span><span><i class="fa fa-calendar"></i> Thursdays 5:30 PM</span></div></div>
+      </div>
+      <div class="session-card">
+        <div class="sc-head"><div class="sc-dot blue"></div><h3>ABC Grade Training</h3></div>
+        <div class="sc-body"><p>Thursday night social mixed training for all levels. Skills + games for everyone!</p>
+          <div class="sc-meta"><span><i class="fa fa-map-marker-alt"></i> Niagara Park Stadium</span><span><i class="fa fa-calendar"></i> Thursdays 7:00 PM</span></div></div>
+      </div>
+      <div class="session-card">
+        <div class="sc-head"><div class="sc-dot gold"></div><h3>Scrimmage Training</h3></div>
+        <div class="sc-body"><p>High-intensity match-play to sharpen your competitive edge.</p>
+          <div class="sc-meta"><span><i class="fa fa-map-marker-alt"></i> Niagara Park Stadium</span><span><i class="fa fa-calendar"></i> Fridays 7:00 PM</span></div></div>
+      </div>
+      <div class="session-card">
+        <div class="sc-head"><div class="sc-dot blue"></div><h3>Social Competition</h3></div>
+        <div class="sc-body"><p>Fun, friendly volleyball without the full rep commitment.</p>
+          <div class="sc-meta"><span><i class="fa fa-map-marker-alt"></i> Terrigal Stadium</span><span><i class="fa fa-calendar"></i> Sundays – see schedule</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-	<section id="sponsors">
-		<div style="margin: 100px;">
-		 <h2 style="justify-content: center;">sponsors</h2>
-		 <h5> </h5>
-		</div>
-	</section>
+<!-- MEDIA REEL -->
+<section id="media">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Media</span>
+      <h2>Highlights &amp; Gallery</h2>
+    </div>
+    <div class="media-tabs">
+      <button class="media-tab active" data-tab="all">All</button>
+      <button class="media-tab" data-tab="highlights">Match Highlights</button>
+      <button class="media-tab" data-tab="training">Training</button>
+      <button class="media-tab" data-tab="social">Club Social</button>
+    </div>
+    <div class="media-grid" id="mediaGrid"></div>
+    <div class="text-center" style="margin-top:32px">
+      <a href="https://www.youtube.com/@YOURCHANNEL" target="_blank" rel="noopener" class="btn-primary">
+        <i class="fab fa-youtube"></i> Subscribe on YouTube
+      </a>
+    </div>
+  </div>
+</section>
 
+<!-- SOCIALS -->
+<section id="socials">
+  <div class="container">
+    <div class="section-header"><span class="tag">Follow Us</span><h2>Find Us Online</h2></div>
+    <div class="socials-grid">
+      <a href="https://www.youtube.com/@YOURCHANNEL" target="_blank" rel="noopener" class="social-card sc-yt"><i class="fab fa-youtube"></i><div class="sc-name">YouTube</div><div class="sc-desc">Match Highlights &amp; Training</div></a>
+      <a href="https://instagram.com/YOURPAGE" target="_blank" rel="noopener" class="social-card sc-ig"><i class="fab fa-instagram"></i><div class="sc-name">Instagram</div><div class="sc-desc">Daily Club Updates</div></a>
+      <a href="https://facebook.com/YOURPAGE" target="_blank" rel="noopener" class="social-card sc-fb"><i class="fab fa-facebook"></i><div class="sc-name">Facebook</div><div class="sc-desc">Indoor Volleyball Community</div></a>
+      <a href="https://facebook.com/YOURPAGE" target="_blank" rel="noopener" class="social-card sc-fb2"><i class="fab fa-facebook"></i><div class="sc-name">Facebook</div><div class="sc-desc">Beach Volleyball Community</div></a>
+      <a href="#" class="social-card sc-wa"><i class="fab fa-whatsapp"></i><div class="sc-name">WhatsApp</div><div class="sc-desc">Main Messaging Platform</div></a>
+    </div>
+  </div>
+</section>
 
+<!-- SPONSORS -->
+<section id="sponsors">
+  <div class="container">
+    <div class="section-header"><span class="tag">Partners</span><h2>Brought to You By</h2></div>
+    <div class="sponsors-row">
+      <img src="img/VNSW.png" alt="Volleyball NSW" class="sponsor-logo" style="scale: 2;">
+      <img src="img/clothLogo.png" alt="Clothing Brand" class="sponsor-logo" style="scale: 2.5;">
+      <div class="sponsor-placeholder">Your Logo Here</div>
+      <div class="sponsor-placeholder">Your Logo Here</div>
+    </div>
+  </div>
+</section>
 
-	<!--
+<!-- REGISTER CTA -->
+<section id="register-cta">
+  <h2>Ready to Play?</h2>
+  <p>Join the CCVC family today. All skill levels welcome.</p>
+  <div class="hero-btns">
+    <a href="register.html" class="btn-primary">Register Now</a>
+    <a href="contact.html" class="btn-outline">Get in Touch</a>
+  </div>
+</section>
 
+<div id="footer-placeholder"></div>
 
-
-	<section id="services" class="section section-padded">
-		<div class="container">
-			<div class="row text-center title">
-				<h2>Services</h2>
-				<h4 class="light muted">Achieve the best results with our wide variety of training options!</h4>
-			</div>
-			<div class="row services">
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="img/icons/heart-blue.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">Cardio Training</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="img/icons/guru-blue.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">Yoga Pilates</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="img/icons/weight-blue.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">Power Training</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="cut cut-bottom"></div>
-	</section>
-	
-	<section id="pricing" class="section">
-		<div class="container">
-			<div class="row title text-center">
-				<h2 class="margin-top white">Pricing</h2>
-				<h4 class="light white">Choose your favorite pricing plan and sign up today!</h4>
-			</div>
-			<div class="row no-margin">
-				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
-					<div class="pricing">
-						<div class="box-main active" data-img="img/pricing1.jpg">
-							<h4 class="white">Yoga Pilates</h4>
-							<h4 class="white regular light">$850.00 <span class="small-font">/ year</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
-							<i class="info-icon icon_question"></i>
-						</div>
-						<div class="box-second active">
-							<ul class="white-list text-left">
-								<li>One Personal Trainer</li>
-								<li>Big gym space for training</li>
-								<li>Free tools &amp; props</li>
-								<li>Free locker</li>
-								<li>Free before / after shower</li>
-							</ul>
-						</div>
-					</div>
-					<div class="pricing">
-						<div class="box-main" data-img="img/pricing2.jpg">
-							<h4 class="white">Cardio Training</h4>
-							<h4 class="white regular light">$100.00 <span class="small-font">/ year</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
-							<i class="info-icon icon_question"></i>
-						</div>
-						<div class="box-second">
-							<ul class="white-list text-left">
-								<li>One Personal Trainer</li>
-								<li>Big gym space for training</li>
-								<li>Free tools &amp; props</li>
-								<li>Free locker</li>
-								<li>Free before / after shower</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section section-padded blue-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<div class="owl-twitter owl-carousel">
-						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
-						</div>
-						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
-						</div>
-						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<h3 class="white">Sign Up</h3>
-				<form action="" class="popup-form">
-					<input type="text" class="form-control form-white" placeholder="Full Name">
-					<input type="text" class="form-control form-white" placeholder="Email Address">
-					<div class="dropdown">
-						<button id="dLabel" class="form-control form-white dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Pricing Plan
-						</button>
-						<ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="dLabel">
-							<li class="animated lightSpeedIn"><a href="#">1 month membership ($150)</a></li>
-							<li class="animated lightSpeedIn"><a href="#">3 month membership ($350)</a></li>
-							<li class="animated lightSpeedIn"><a href="#">1 year membership ($1000)</a></li>
-							<li class="animated lightSpeedIn"><a href="#">Free trial class</a></li>
-						</ul>
-					</div>
-					<div class="checkbox-holder text-left">
-						<div class="checkbox">
-							<input type="checkbox" value="None" id="squaredOne" name="check" />
-							<label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-submit">Submit</button>
-				</form>
-			</div>
-		</div>
-	</div> -->
-	<div id="footer-placeholder"></div>
-	
-
-	
-
-	<!-- Holder for mobile navigation -->
-	<div class="mobile-nav">
-		<ul>
-		</ul>
-		<a href="#" class="close-link"><i class="arrow_up"></i></a>
-	</div>
-	<!-- Scripts -->
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/typewriter.js"></script>
-	<script src="js/jquery.onepagenav.js"></script>
-	<script src="js/main.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-	<script src="js/socialTable.js"></script>
-	<script src="https://apis.google.com/js/platform.js"></script>
-	<script src="https://iframely.net/embed.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="js/global.js"></script>
+<script src="js/draws.js"></script>
+<script src="js/socialTable.js"></script>
+<script src="js/index.js"></script>
 </body>
-
 </html>

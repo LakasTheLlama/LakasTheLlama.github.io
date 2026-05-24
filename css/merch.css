@@ -1,0 +1,119 @@
+/* =============================================================
+   MERCH PAGE  –  css/merch.css
+   ============================================================= */
+
+/* ─────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────── */
+#merch-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 96px 5% 80px;
+  transition: padding-right var(--transition);
+  position: relative;
+}
+
+#merch-section.panel-open {
+  justify-content: flex-start;
+  padding-right: 2%;
+}
+
+/* ─────────────────────────────────────────
+   PRODUCT GRID
+───────────────────────────────────────── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px; width: 100%;
+  transition: max-width var(--transition);
+}
+
+#merch-section.panel-open .product-grid {
+  max-width: 58%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.product-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer; overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.product-card:hover   { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.product-card.active  { border: 2px solid var(--gold); }
+
+.product-img {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover;
+  background: var(--offwhite);
+}
+
+.product-info { padding: 14px 16px 18px; }
+.product-info h3 { font-size: 18px; color: var(--navy); margin-bottom: 4px; }
+.product-info .prod-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.product-info .prod-price { font-size: 15px; color: var(--text); margin: 2px 0; }
+.product-info .prod-price span { color: var(--blue); font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   DETAIL PANEL
+───────────────────────────────────────── */
+.detail-panel {
+  position: fixed; top: 0; right: 0;
+  width: 42%; height: 100vh;
+  background: var(--white);
+  box-shadow: -4px 0 24px rgba(0,0,0,.15);
+  z-index: 500; overflow-y: auto;
+  padding: 88px 6% 48px;
+  transform: translateX(100%);
+  transition: transform .35s ease;
+}
+
+.detail-panel.open { transform: translateX(0); }
+
+.detail-close {
+  position: absolute; top: 84px; right: 5%;
+  background: var(--offwhite); border: none; border-radius: 50%;
+  width: 40px; height: 40px; font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition);
+}
+.detail-close:hover { background: var(--gray-light); }
+
+.detail-img {
+  width: 100%; border-radius: var(--radius); margin-bottom: 22px;
+}
+
+.detail-img-placeholder {
+  width: 100%; aspect-ratio: 1/1;
+  background: linear-gradient(135deg, var(--offwhite), var(--gray-light));
+  border-radius: var(--radius); margin-bottom: 22px;
+  display: flex; align-items: center; justify-content: center;
+}
+.detail-img-placeholder i { font-size: 56px; color: var(--gray); }
+
+.detail-title       { font-size: 28px; color: var(--navy); margin-bottom: 6px; }
+.detail-desc        { color: var(--text-muted); margin-bottom: 18px; }
+.detail-prices      { margin-bottom: 24px; display: flex; flex-direction: column; gap: 6px; }
+.detail-price       { font-size: 17px; color: var(--text); }
+.detail-price strong { color: var(--navy); }
+
+.request-btn {
+  width: 100%; padding: 16px;
+  background: var(--gold); color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px;
+  border: none; border-radius: var(--radius-sm); cursor: pointer;
+  transition: background var(--transition);
+}
+.request-btn:hover { background: var(--gold-dark); }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 860px) {
+  .detail-panel         { width: 100%; }
+  #merch-section.panel-open .product-grid { max-width: 100%; }
+  #merch-section.panel-open { display: none; } /* hide grid when panel open on mobile */
+}

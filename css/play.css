@@ -1,0 +1,177 @@
+/* =============================================================
+   PLAY PAGE  –  css/play.css
+   ============================================================= */
+
+/* ─────────────────────────────────────────
+   TIMETABLE SECTION
+───────────────────────────────────────── */
+#timetable {
+  padding: 36px 5% 80px;
+  background: var(--offwhite);
+}
+
+.timetable-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 30px;
+}
+
+/* Override week label colour – sits on light bg here */
+#timetable #weekDisplay { color: var(--navy); }
+
+.timetable-wrapper {
+  position: relative;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.timetable-grid {
+  width: 100%; border-collapse: collapse; background: var(--white); table-layout: fixed;
+}
+
+.timetable-grid thead tr {
+  background: linear-gradient(135deg, var(--navy), var(--blue2));
+}
+
+.timetable-grid th {
+  padding: 14px 10px; text-align: center; color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+.timetable-grid td {
+  padding: 0; text-align: center;
+  border: 1px solid var(--gray-light); vertical-align: middle;
+}
+
+.time-slot-cell  { height: 64px; position: relative; }
+.time-cell       { background: #f0f4fb; font-weight: 700; color: var(--blue); font-size: 13px; white-space: nowrap; padding: 0 8px; }
+
+#eventLayer { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
+
+.week-nav { 
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: black;
+  font-weight: 700; font-size: 27px;
+  padding: 4px 20px; border-radius: var(--radius-sm); border: 2px solid var(--gold);
+  cursor: pointer; transition: var(--transition);
+}
+.week-nav:hover { border-color: black; }
+
+
+/* ─────────────────────────────────────────
+   SESSION BLOCKS (event overlay)
+───────────────────────────────────────── */
+.session-block,
+.session-block-part {
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 12px;
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+  cursor: pointer;
+}
+
+.session-block { pointer-events: auto; }
+.session-block:hover { box-shadow: 0 0 0 2px rgba(80,140,255,.4), 0 8px 24px rgba(80,140,255,.3); transform: translateY(-1px); filter: brightness(1.05); }
+
+.session-block-wrapper { position: absolute; inset: 0; cursor: pointer; }
+.session-block-wrapper:hover .session-block-part { filter: brightness(1.05); }
+
+.session-color-1 { background: var(--blue2); color: var(--white); }
+.session-color-2 { background: var(--gold);  color: var(--navy); }
+
+.session-info { display: flex; flex-direction: column; gap: 4px; height: 100%; }
+.session-info strong { font-size: 100%; }
+.session-color-1 .session-info strong { color: var(--gold); }
+.session-color-2 .session-info strong { color: var(--navy); }
+.time-range     { font-size: 90%; font-weight: 700; }
+.session-color-1 .time-range { color: #d4c40d; }
+.location-label { font-size: 90%; font-style: italic; }
+.date-label     { font-size: 11px; }
+
+/* ─────────────────────────────────────────
+   REGISTRATION WARNING OVERLAY
+───────────────────────────────────────── */
+.reg-warning {
+  position: absolute; top: -10px; left: 15px; right: 15px; bottom: 0;
+  z-index: 10;
+  background: rgba(10,22,40,.82);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 10%;
+  border-radius: var(--radius);
+}
+
+.hidden {
+	display: none;
+}
+
+.reg-warning h2 { color: var(--white); margin-bottom: 24px; }
+
+.reg-warning .btn-primary { margin-bottom: 20px; }
+
+.reg-warning .dismiss-hint {
+  color: rgba(255,255,255,.5); font-size: 14px; cursor: pointer;
+}
+.reg-warning .dismiss-hint:hover { color: var(--white); }
+
+/* ─────────────────────────────────────────
+   SESSION DROPDOWN SECTIONS
+───────────────────────────────────────── */
+.play-section { width: 100%; margin-top: 6px; }
+
+.play-dropdown {
+  position: relative; margin: auto; width: 70%; height: 90px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: filter var(--transition);
+  border-radius: var(--radius-sm);
+}
+.play-dropdown:hover { filter: brightness(1.08); }
+
+.play-dropdown h2 { text-transform: uppercase; line-height: 1; font-size: clamp(20px,3vw,32px); letter-spacing: 2px; font-weight: 600;}
+
+.play-arrow {
+  position: absolute; right: 5%; font-size: 28px;
+  transition: transform var(--transition);
+  pointer-events: none;
+}
+
+.play-section.active .play-arrow { transform: rotate(180deg); }
+
+.play-info {
+  display: none; width: 90%; margin: 0 auto;
+  padding: 28px 0 40px;
+}
+
+.play-section.active .play-info { display: block; }
+
+.play-info h3 { color: var(--text); margin-bottom: 16px; font-size: 18px; font-weight: 500; }
+
+.play-info iframe {
+  width: 100%; max-width: 600px; height: 380px;
+  border: 0; border-radius: var(--radius); margin-top: 16px;
+}
+
+/* colour bands */
+.band-gold { background: var(--blue2); }
+.band-blue { background: var(--gold); }
+.band-gold h2 { color: var(--gold); }
+.band-blue h2 { color: var(--blue2); }
+.band-gold .play-arrow { color: var(--gold); }
+.band-blue .play-arrow { color: var(--navy); }
+
+/* bottom spacer */
+.play-end-spacer { height: 80px; }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 760px) {
+  .play-dropdown { width: 94%; }
+  .play-info     { width: 94%; }
+  .play-info iframe { height: 260px; }
+}
