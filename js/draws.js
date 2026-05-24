@@ -134,9 +134,6 @@
         /(losses|losses\/forfeits)\s+(\d+)/
       );
 
-      const streakMatch = statText.match(
-        /(biggest win streak|best streak)\s+(\d+)/
-      );
 
       if (winsMatch) {
         result.wins = parseInt(winsMatch[1], 10);
@@ -150,9 +147,6 @@
         result.losses = parseInt(lossesMatch[2], 10);
       }
 
-      if (streakMatch) {
-        result.streak = parseInt(streakMatch[2], 10);
-      }
     }
 
     /* ---------------------------------------------------------
@@ -331,11 +325,6 @@
         <div class="stat-pill">
           <div class="snum">${data.losses}</div>
           <div class="slbl">Losses</div>
-        </div>
-
-        <div class="stat-pill">
-          <div class="snum">${data.streak}</div>
-          <div class="slbl">Best Streak</div>
         </div>
 
       </div>

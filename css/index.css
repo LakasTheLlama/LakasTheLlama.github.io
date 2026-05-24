@@ -177,7 +177,7 @@
 .sc-dot.gold { background: var(--gold); }
 .sc-dot.blue { background: var(--blue2); }
 
-.sc-head h3 { font-size: 20px; color: var(--white); }
+.sc-head h3 { font-size: 20px; font-weight: 500; color: var(--white); }
 
 .sc-body { padding: 0 22px 22px; }
 .sc-body p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 12px; }
@@ -321,56 +321,3 @@
 #register-cta h2 { color: var(--white); text-transform: uppercase; position: relative; z-index: 1; }
 #register-cta p  { font-size: 18px; color: rgba(255,255,255,.72); margin: 16px 0 36px; position: relative; z-index: 1; }
 
-/* 
-          nav bar notifications
-*/
-.nav-ticker {
-  flex: 1;
-  overflow: hidden;
-
-  max-width: 0;
-  opacity: 0;
-
-  transition:
-    max-width .35s ease,
-    opacity .25s ease,
-    margin .35s ease;
-
-  margin: 0;
-  white-space: nowrap;
-}
-/* ONLY SHOW WHEN SCROLLED */
-nav.scrolled .nav-ticker {
-  max-width: 100%;
-  opacity: 1;
-  margin: 0 50px;
-}
-
-.nav-ticker-track {
-  display: flex;
-  gap: 50px;
-  width: max-content;
-
-  animation: navTicker 45s linear infinite;
-}
-
-.nav-ticker-track .notice-item {
-  color: var(--gold);
-  font-size: 20px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  letter-spacing: .3px;
-}
-
-.nav-ticker-track .notice-item i {
-  font-size: 11px;
-}
-
-@keyframes navTicker {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}

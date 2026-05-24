@@ -15,6 +15,7 @@ function loadComponent(selector, url, callback) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   loadComponent('#navbar-placeholder', 'components/navbar.html', () => {
     initNavbar();
     setActiveNavLink();
